@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int     ft_check_args(int argc, char **argv)
+int		ft_check_args(int argc, char **argv)
 {
     int result;
 
@@ -16,7 +16,10 @@ int     ft_check_args(int argc, char **argv)
     return (result);
 }
 
-void    ft_check_config()
+int		ft_check_config(t_list config)
 {
-    
+	int error;
+
+	error = 0;
+	
 }
