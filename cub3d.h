@@ -45,5 +45,6 @@ void		malloc_r(t_list *options, char *line);
 int 		ft_strlen_parsing(char *str);
 void    	ft_strcpy_parsing(char *dest, char *str);
 void	    ft_strcpy_numbers(char *dst, char *str);
+int			ft_check_config(t_list config);
 
 #endif
