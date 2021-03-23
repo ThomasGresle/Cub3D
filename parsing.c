@@ -38,7 +38,7 @@ void    ft_copy_file(char **argv, char ***line)
     return ;
 }
 
-char    **ft_parse_file(char **argv, char **file, t_list *options)
+void	ft_parse_file(char **argv, char ***map, t_list *options)
 {
     char    **line;
     int     fd;
@@ -48,5 +48,32 @@ char    **ft_parse_file(char **argv, char **file, t_list *options)
     i = 0;
     ft_copy_file(argv, &line);
     malloc_string_struct(options, line);
-    return (file);
+	ft_parse_map(&(*map), line);
+	free_array(&line);
+    return ;
+}
+
+void	ft_parse_map(char ***map, char **line)
+{
+	int i;
+	int	j;
+	int k;
+	int l;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	l = 0;
+	while (line[i] && line[i][0] != ' ' && !(line[i][0] >= 48 && line[i][0] <= 57))
+		i++;
+	while (line[i + j])
+	{
+		while (line[i + j][k])
+			k++;
+		if (k > l)
+			l = k;
+		j++;
+	}
+	ft_malloc_map(&(*map), j, l);
+	create_map(&(*map), line, i);
 }

@@ -26,3 +26,19 @@ void	malloc_string_struct(t_list *options, char **line)
 		i++;
 	}
 }
+
+void	free_array(char ***array)
+{
+	int i;
+
+	i = 0;
+	while ((*array)[i])
+		i++;
+	while (i > 0)
+	{
+		free((*array)[i]);
+		i--;
+	}
+	free((*array)[i]);
+	free(*array);
+}
