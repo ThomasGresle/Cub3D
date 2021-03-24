@@ -96,7 +96,7 @@ int		check_and_parse(int argc, char **argv, char ***map, t_list *config)
 		return (0);
 	if (ft_check_config(config->floor_color) == 0)
 		return (0);
-	//if (ft_check_map(*map) == 1)
-	//	return (0);
+	if (ft_check_map(*map) == 1)
+		return (0);
 	return (1);
 }
