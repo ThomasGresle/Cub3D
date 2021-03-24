@@ -18,8 +18,8 @@ typedef	struct	s_list
 		char	*west_t;
 		char	*east_t;
 		char	*sprite_t;
-		char	*flour_colour;
-		char	*ceiling_colour;
+		char	*floor_color;
+		char	*ceiling_color;
 }				t_list;
 
 char		**parse(int fd);
@@ -45,14 +45,17 @@ void		malloc_r(t_list *options, char *line);
 int 		ft_strlen_parsing(char *str);
 void    	ft_strcpy_parsing(char *dest, char *str);
 void	    ft_strcpy_numbers(char *dst, char *str);
-int			ft_check_config(t_list config);
+int			ft_check_config(char *str);
 void		free_array(char ***array);
 void		ft_malloc_map(char ***map, int i, int j);
 int			ft_check_map(char **line);
-void		copy_line_in_map(char **map, char *str);
+void		copy_line_in_map(char **map, char *str, int i);
 void		ft_parse_map(char ***map, char **line);
-void		create_map(char ***map, char **line, int i);
+void		create_map(char ***map, char **line, int i, int j);
 void		free_array(char ***array);
 int			check_and_parse(int argc, char **argv, char ***map, t_list *config);
+int			ft_atoi_and_free(char *str);
+int			split_config(char *str, int *i);
+int			line_nbr(char **map, int *error);
 
 #endif

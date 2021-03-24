@@ -81,7 +81,7 @@ void    ft_strcpy_numbers(char *dst, char *str)
         j++;
     while (str[j] && str[j] == ' ')
         j++;
-    while (str[j] && str[j] >= '0' && str[j] <= '9')
+    while (str[j] && ((str[j] >= '0' && str[j] <= '9') || str[j] == '-'))
     {
         dst[i] = str[j];
         i++;

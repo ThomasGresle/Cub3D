@@ -53,6 +53,33 @@ void	ft_parse_file(char **argv, char ***map, t_list *options)
     return ;
 }
 
+void	finish_map(char ***map, int l)
+{
+	int i;
+	int j;
+	int k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while ((*map)[i])
+	{
+		j = 0;
+		k = l - 1;
+		while ((*map)[i][j] && (*map)[i][j] == '0')
+		{
+			(*map)[i][j] = ' ';
+			j++;
+		}
+		while ((*map)[i][k] && (*map)[i][k] == '0')
+		{
+			(*map)[i][k] = ' ';
+			k--;
+		}
+		i++;
+	}
+}
+
 void	ft_parse_map(char ***map, char **line)
 {
 	int i;
@@ -68,6 +95,7 @@ void	ft_parse_map(char ***map, char **line)
 		i++;
 	while (line[i + j])
 	{
+		k = 0;
 		while (line[i + j][k])
 			k++;
 		if (k > l)
@@ -75,5 +103,6 @@ void	ft_parse_map(char ***map, char **line)
 		j++;
 	}
 	ft_malloc_map(&(*map), j, l);
-	create_map(&(*map), line, i);
+	create_map(&(*map), line, i, l);
+	finish_map(&(*map), l);
 }
