@@ -20,6 +20,9 @@ typedef	struct	s_list
 		char	*sprite_t;
 		char	*floor_color;
 		char	*ceiling_color;
+		int		player_line;
+		int		player_column;
+		char	player_orientation;
 }				t_list;
 
 char		**parse(int fd);
@@ -28,11 +31,11 @@ char		*ft_strdup(const char *s1);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			get_next_line(int fd, char **line);
-void		ft_copy_file(char **argv, char ***line);
+void		ft_copy_file(char **argv, char ***line, int *error);
 int			ft_check_argv(char **argv);
 int			ft_check_args(int argc, char **argv);
 int			ft_strcmp(char *s1, char *s2, int j);
-void		ft_parse_file(char **argv, char ***map, t_list *options);
+int			ft_parse_file(char **argv, char ***map, t_list *options);
 void		malloc_string_struct(t_list *options, char **line);
 void		malloc_n(t_list *options, char *line);
 void		malloc_s(t_list *options, char *line);

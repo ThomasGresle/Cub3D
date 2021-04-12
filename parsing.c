@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void    ft_copy_file(char **argv, char ***line)
+void    ft_copy_file(char **argv, char ***line, int *error)
 {
     int     i;
     int     ret;
@@ -38,19 +38,25 @@ void    ft_copy_file(char **argv, char ***line)
     return ;
 }
 
-void	ft_parse_file(char **argv, char ***map, t_list *options)
+int		ft_parse_file(char **argv, char ***map, t_list *options)
 {
     char    **line;
+	int		error;
     int     fd;
     int     i;
 
     line = NULL;
+	error = 0;
     i = 0;
-    ft_copy_file(argv, &line);
-    malloc_string_struct(options, line);
-	ft_parse_map(&(*map), line);
-	free_array(&line);
-    return ;
+    ft_copy_file(argv, &line, &error);
+	if (error == 0)
+	{
+		malloc_string_struct(options, line);
+		ft_parse_map(&(*map), line);
+		free_array(&line);
+		return (0);
+	}
+    return (1);
 }
 
 void	finish_map(char ***map, int l)

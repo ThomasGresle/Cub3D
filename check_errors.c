@@ -59,33 +59,20 @@ int		ft_check_config(char *str)
 	return (1);
 }
 
-int		ft_check_map(char **line)
+/* int		ft_check_map(char **line)
 {
 	int error;
 	int i;
+	int j;
 	
 	error = 0;
-	i = 0;
+	i = 1;
+	j = 0;
 	if (line_nbr(line, &error) == 0)
 		printf("Error\nLa map n'est pas assez grande\n");
-	if (error == 0 && first_line(line, &error) == 0)
-	{
-		printf("Error\nLa premiere ligne de la map est incorrecte\n");
-		i++;
-	}
-	if (error == 0 && line[i - 1] && line[i + 1])
-	{
-		while (line[i])
-		{
-			if (check_line(line, &error, &i) == 0)
-				printf("Error\nLa %de ligne de la map est incorrecte", (i + 1));
-			i++;
-		}
-	}
-	if (error == 0 && last_line(line, &error, i) == 0)
-		printf("Error\nLa derniere ligne de la map est incorrecte\n");
-	return (error);
-}
+	if (error != 1)
+		error = check_top(line, &i, &j, &error);
+} */
 
 int		check_and_parse(int argc, char **argv, char ***map, t_list *config)
 {
@@ -96,7 +83,9 @@ int		check_and_parse(int argc, char **argv, char ***map, t_list *config)
 		return (0);
 	if (ft_check_config(config->floor_color) == 0)
 		return (0);
-	if (ft_check_map(*map) == 1)
+	if (check_position(&(*map), &(*config)))
 		return (0);
+	/* if (ft_check_map(*map) == 1)
+		return (0); */
 	return (1);
 }

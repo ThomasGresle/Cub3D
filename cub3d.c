@@ -18,6 +18,9 @@ int main(int argc, char **argv)
     printf("%s\n", options_map.resolution);
     printf("%s\n", options_map.floor_color);
     printf("%s\n", options_map.ceiling_color); */
+	printf("%d\n", options_map.player_line);
+	printf("%d\n", options_map.player_column);
+	printf("%c\n", options_map.player_orientation);
 	while (map[i])
 	{
 		printf("%s\n", map[i]);

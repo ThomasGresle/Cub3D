@@ -32,9 +32,7 @@ int	line_nbr(char **map, int *error)
 	while (map[i])
 	{
 		while (map[i][j])
-		{
 			j++;
-		}
 		i++;
 	}
 	if (i < 3 || j < 3)
@@ -45,25 +43,48 @@ int	line_nbr(char **map, int *error)
 	return (1);
 }
 
-int	first_line(char **map, int *error)
+void	error_msg(int i, int *error)
+{
+	printf("Error\nIl y a un probleme sur la %de ligne", i + 1);
+	*error = 1;
+}
+
+int		check_position(char ***map, t_list *config)
 {
 	int i;
 	int j;
+	int position;
 
 	i = 0;
 	j = 0;
-	while (map[i][j])
+	position = 0;
+	while ((*map)[i] && (*map)[i][j])
 	{
-		
+		while ((*map)[i][j] && (*map)[i][j] != 'W' && (*map)[i][j] != 'N'
+		&& (*map)[i][j] != 'S' && (*map)[i][j] != 'E')
+		{
+			j++;
+		}
+		if ((*map)[i][j] && ((*map)[i][j] == 'W' || (*map)[i][j] == 'E'
+		|| (*map)[i][j] == 'S' || (*map)[i][j] == 'N'))
+		{
+			position++;
+			config->player_line = i;
+			config->player_column = j;
+			config->player_orientation = (*map)[i][j];
+			(*map)[i][j] = '0';
+			j++;
+		}
+		if (!((*map)[i][j]))
+		{
+			i++;
+			j = 0;
+		}
 	}
-}
-
-int	check_line(char **map, int *error, int *i)
-{
-
-}
-
-int	last_line(char **map, int *error, int i)
-{
-
+	if (position != 1)
+	{
+		printf("Error\nIl y a une erreur concernant la position du joueur dans la map\n");
+		return (1);
+	}
+	return (0);
 }
