@@ -43,12 +43,6 @@ int	line_nbr(char **map, int *error)
 	return (1);
 }
 
-void	error_msg(int i, int *error)
-{
-	printf("Error\nIl y a un probleme sur la %de ligne", i + 1);
-	*error = 1;
-}
-
 int		check_position(char ***map, t_list *config)
 {
 	int i;

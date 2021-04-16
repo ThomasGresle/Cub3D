@@ -51,7 +51,7 @@ void	    ft_strcpy_numbers(char *dst, char *str);
 int			ft_check_config(char *str);
 void		free_array(char ***array);
 void		ft_malloc_map(char ***map, int i, int j);
-int			ft_check_map(char **line);
+int			ft_check_map(char **line, t_list config);
 void		copy_line_in_map(char **map, char *str, int i);
 void		ft_parse_map(char ***map, char **line);
 void		create_map(char ***map, char **line, int i, int j);
