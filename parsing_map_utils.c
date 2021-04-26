@@ -1,10 +1,12 @@
 #include "cub3d.h"
 
-void	ft_malloc_map(char ***map, int i, int j)
+void	ft_malloc_map(char ***map, int i, int j, t_list *config)
 {
 	int k;
 
 	k = 0;
+	config->line_nbr = i - 1;
+	config->column_nbr = j - 1;
 	if (!(*map = malloc(sizeof(char *) * (i + 1))))
 		return ;
 	while (k < i)
@@ -23,10 +25,10 @@ void	copy_line_in_map(char **map, char *str, int l)
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] < 51 && str[i] > 47) || str[i] == 'N' || str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
-			(*map)[i] = str[i];
 		if (str[i] == ' ')
 			(*map)[i] = '0';
+		else
+			(*map)[i] = str[i];
 		i++;
 	}
 	while (i < l)

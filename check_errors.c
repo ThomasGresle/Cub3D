@@ -59,20 +59,19 @@ int		ft_check_config(char *str)
 	return (1);
 }
 
-int		ft_check_map(char **line, t_list config)
+int		ft_check_map(char **line, t_list *config)
 {
-	int error;
 	int i;
 	int j;
 	
-	error = 0;
-	i = config.player_line;
-	j = config.player_column;
-	if (line_nbr(line, &error) == 0)
+	i = config->player_line;
+	j = config->player_column;
+	if (line_nbr(line, &(*config)) == 0)
 		printf("Error\nLa map n'est pas assez grande\n");
-	if (error != 1)
-		check_walls(line, i, j, &error);
-	return (error);
+	check_inside_map(line, &(*config));
+	if (config->error != 1)
+		check_walls(line, &i, &j, &(*config));
+	return (config->error);
 }
 
 int		check_and_parse(int argc, char **argv, char ***map, t_list *config)
@@ -86,7 +85,7 @@ int		check_and_parse(int argc, char **argv, char ***map, t_list *config)
 		return (0);
 	if (check_position(&(*map), &(*config)))
 		return (0);
-	/* if (ft_check_map(*map, config) == 1)
-		return (0); */
+	if (ft_check_map(*map, &(*config)))
+		return (0);
 	return (1);
 }

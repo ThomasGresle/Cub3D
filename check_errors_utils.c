@@ -22,7 +22,7 @@ int	split_config(char *str, int *i)
 	return (ft_atoi_and_free(number));
 }
 
-int	line_nbr(char **map, int *error)
+int	line_nbr(char **map, t_list *config)
 {
 	int i;
 	int j;
@@ -37,7 +37,7 @@ int	line_nbr(char **map, int *error)
 	}
 	if (i < 3 || j < 3)
 	{
-		*error = 1;
+		config->error = 1;
 		return (0);
 	}
 	return (1);

@@ -24,7 +24,7 @@ void    ft_copy_file(char **argv, char ***line, int *error)
     close(fd);
     free(buf);
     linenbr++;
-    if(!(*line = malloc(sizeof(char *) * (linenbr))))
+    if(!(*line = malloc(sizeof(char *) * (linenbr + 1))))
         return ;
     (*line)[linenbr] = '\0';
     fd = open(argv[1], O_RDONLY);
@@ -52,7 +52,7 @@ int		ft_parse_file(char **argv, char ***map, t_list *options)
 	if (error == 0)
 	{
 		malloc_string_struct(options, line);
-		ft_parse_map(&(*map), line);
+		ft_parse_map(&(*map), line, &(*options));
 		free_array(&line);
 		return (0);
 	}
@@ -86,7 +86,7 @@ void	finish_map(char ***map, int l)
 	}
 }
 
-void	ft_parse_map(char ***map, char **line)
+void	ft_parse_map(char ***map, char **line, t_list *config)
 {
 	int i;
 	int	j;
@@ -108,7 +108,7 @@ void	ft_parse_map(char ***map, char **line)
 			l = k;
 		j++;
 	}
-	ft_malloc_map(&(*map), j, l);
+	ft_malloc_map(&(*map), j, l, &(*config));
 	create_map(&(*map), line, i, l);
 	finish_map(&(*map), l);
 }

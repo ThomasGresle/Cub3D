@@ -23,6 +23,9 @@ typedef	struct	s_list
 		int		player_line;
 		int		player_column;
 		char	player_orientation;
+		int		line_nbr;
+		int		column_nbr;
+		int		error;
 }				t_list;
 
 char		**parse(int fd);
@@ -50,15 +53,24 @@ void    	ft_strcpy_parsing(char *dest, char *str);
 void	    ft_strcpy_numbers(char *dst, char *str);
 int			ft_check_config(char *str);
 void		free_array(char ***array);
-void		ft_malloc_map(char ***map, int i, int j);
-int			ft_check_map(char **line, t_list config);
+void		ft_malloc_map(char ***map, int i, int j, t_list *config);
+int			ft_check_map(char **line, t_list *config);
 void		copy_line_in_map(char **map, char *str, int i);
-void		ft_parse_map(char ***map, char **line);
+void		ft_parse_map(char ***map, char **line, t_list *config);
 void		create_map(char ***map, char **line, int i, int j);
 void		free_array(char ***array);
 int			check_and_parse(int argc, char **argv, char ***map, t_list *config);
 int			ft_atoi_and_free(char *str);
 int			split_config(char *str, int *i);
-int			line_nbr(char **map, int *error);
+int			line_nbr(char **map, t_list *config);
+void		go_on_top_right(char **map, int *i, int *j, t_list *config);
+void		check_walls(char **map, int *i, int *j, t_list *config);
+void		error_msg(int i, int j, t_list *config);
+void		check_right(char **map, int *i, int *j, t_list *config);
+void		check_top(char **map, int *i, int *j, t_list *config);
+void		check_left(char **map, int *i, int *j, t_list *config);
+void		check_bottom(char **map, int *i, int *j, t_list *config);
+int			check_position(char ***map, t_list *config);
+void		check_inside_map(char **map, t_list *config);
 
 #endif

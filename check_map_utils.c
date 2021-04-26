@@ -1,48 +1,69 @@
 #include "cub3d.h"
 
 
-void	error_msg(int i, int j, int *error)
+void	error_msg(int i, int j, t_list *config)
 {
-	printf("Error\nLa map est ouverte au niveau de la %de ligne, %de colonne", i + 1, j + 1);
-	*error = 1;
+	printf("Error\nLa map est ouverte au niveau de la %de ligne, %de colonne\n", i + 1, j + 1);
+	config->error = 1;
 }
 
-int	check_walls(char **map, int k, int l, int *error)
+void	check_walls(char **map, int *i, int *j, t_list *config)
 {
-	int i;
-	int j;
+	int k;
 
-	i = k;
-	j = l;
-	go_on_top_right(map, &i, &j, &error);
-	if (*error == 0)
-		check_top(map, &i, &j, error);
-
-}
-
-int	go_on_top_right(char **map, int *k, int *l, int *error)
-{
-	int i;
-	int j;
-
-	i = *k;
-	j = *l;
-	while (*error == 0 && map[i] && map[i - 1][j] && map[i - 1][j] != '1')
+	k = 0;
+	go_on_top_right(map, i, j, &(*config));
+	while (config->error == 0 && k < 10)
 	{
-		i--;
-		if (!(map[i - 1][j]))
-			error_msg(i, j, error);
-		if (map[i - 1][j] == '1')
+		check_right(map, i, j, &(*config));
+		if (config->error == 0)
+			check_bottom(map, i, j, &(*config));
+		if (config->error == 0)
+			check_left(map, i, j, &(*config));
+		if (config->error == 0)
+			check_top(map, i, j, &(*config));
+		k++;
+	}
+}
+
+void	go_on_top_right(char **map, int *i, int *j, t_list *config)
+{
+	while (config->error == 0 && map[(*i)][(*j)] && map[(*i) - 1][(*j)] && map[(*i)][(*j) + 1] && (map[(*i) - 1][(*j)] != '1' || map[(*i)][(*j) + 1] != '1'))
+	{
+		(*i)--;
+		if (!(map[(*i) - 1][(*j)]))
+			error_msg(*i - 1, *j, &(*config));
+		if (map[(*i) - 1][(*j)] == '1')
 		{
-			while (map[i][j] && map[i][j + 1] && map[i][j + 1] == '0' && map[i - 1] && map[i - 1] == '1')
-				j++;
-			if (!(map[i][j + 1]))
-				error_msg(i, j, error);
+			while (map[(*i)][(*j)] && map[(*i)][(*j) + 1] && map[(*i)][(*j) + 1] == '0' && map[(*i) - 1][(*j)] && map[(*i) - 1][(*j)] == '1')
+				(*j)++;
+			if (!(map[(*i)][(*j) + 1]))
+				error_msg(*i, *j + 1, &(*config));
 		}
 	}
 }
 
-int	check_top(char **map, int *i, int *j, int *error)
+void	check_inside_map(char **map, t_list *config)
 {
+	int i;
+	int j;
 
+	i = 0;
+	j = 0;
+	while (i <= config->line_nbr && map[i][j] && config->error == 0)
+	{
+		while (map[i][j] && config->error == 0)
+		{
+			if (map[i][j] != '0' && map[i][j] != '1'
+			&& map[i][j] != '2' && map[i][j] != 'E' && map[i][j] != 'W'
+			&& map[i][j] != ' ' && map[i][j] != 'S' && map[i][j] != 'N')
+			{
+				printf("Error\nIl y a un caractere incorrect dans la map: '%c' a la %de ligne %de colonne\n", map[i][j], i + 1, j + 1);
+				config->error = 1;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 }
