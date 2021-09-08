@@ -77,6 +77,7 @@ int		check_and_parse(int argc, char **argv, char ***map, t_list *config)
 	if (ft_check_file(argv[1]) == 0)
 		return (0);
     ft_parse_file(argv, &(*map), &(*config));
+	printf("1\n");
     if (ft_check_config(config->ceiling_color) == 0)
 		return (0);
 	correct_ceiling(config, config->ceiling_color);

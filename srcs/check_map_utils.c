@@ -56,7 +56,7 @@ void	check_inside_map(char **map, t_list *config)
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'E' && map[i][j] != 'W'
 			&& map[i][j] != ' ' && map[i][j] != 'S' && map[i][j] != 'N')
 			{
-				printf("Error\nIl y a un caractere incorrect dans la map: '%c' a la %de ligne %de colonne\n", map[i][j], i + 1, j + 1);
+				printf("Error\nIl y a un caractere incorrect dans la map: %c a la %de ligne %de colonne\n", map[i][j], i + 1, j + 1);
 				config->error = 1;
 			}
 			j++;

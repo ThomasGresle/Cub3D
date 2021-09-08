@@ -15,7 +15,7 @@ void	ft_malloc_map(char ***map, int i, int j, t_list *config)
 			return ;
 		k++;
 	}
-	*map[k] = malloc(sizeof(char) * 1);
+	(*map)[k] = malloc(sizeof(char) * 1);
 }
 
 void	copy_line_in_map(char **map, char *str, int l)
@@ -44,11 +44,15 @@ void	create_map(char ***map, char **line, int i, int l)
 	int j;
 
 	j = 0;
+	printf("\n%d\n\n", l);
 	while (line [i])
 	{
+		write(1, line[i], strlen(line[i]));
 		copy_line_in_map(&((*map)[j]), line[i], l);
+		//write(1, (*map)[i], strlen((*map)[i]));
+		//printf("%s\n", (*map)[j]);
 		i++;
 		j++;
 	}
-	**map[j] = '\0';
+	(*map)[j] = '\0';
 }
