@@ -59,8 +59,8 @@ int		ft_check_map(char **line, t_list *config)
 	int i;
 	int j;
 	
-	i = config->posX;
-	j = config->posY;
+	i = config->startX;
+	j = config->startY;
 	if (line_nbr(line, &(*config)) == 0)
 		printf("Error\nLa map n'est pas assez grande\n");
 	else
@@ -77,7 +77,6 @@ int		check_and_parse(int argc, char **argv, char ***map, t_list *config)
 	if (ft_check_file(argv[1]) == 0)
 		return (0);
     ft_parse_file(argv, &(*map), &(*config));
-	printf("1\n");
     if (ft_check_config(config->ceiling_color) == 0)
 		return (0);
 	correct_ceiling(config, config->ceiling_color);

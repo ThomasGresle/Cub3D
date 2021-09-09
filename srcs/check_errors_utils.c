@@ -63,8 +63,8 @@ int		check_position(char ***map, t_list *config)
 		|| (*map)[i][j] == 'S' || (*map)[i][j] == 'N'))
 		{
 			position++;
-			config->posX = i + 0.5;
-			config->posY = j + 0.5;
+			config->startX = i;
+			config->startY = j;
 			config->player_orientation = (*map)[i][j];
 			(*map)[i][j] = '0';
 			j++;

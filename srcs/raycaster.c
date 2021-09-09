@@ -3,7 +3,6 @@
 int	final_raycasting(t_list *config)
 {
 	config->x = 0;
-	set_player(config);
 	while (config->x < config->width)
 	{
 		struct_init2(config);

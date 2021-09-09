@@ -71,7 +71,6 @@ void	finish_map(char ***map, int l)
 	k = 0;
 	while ((*map)[i])
 	{
-		printf("%d\n", i);
 		j = 0;
 		k = l - 1;
 		while ((*map)[i] && (*map)[i][j] && (*map)[i][j] == '0')
@@ -79,13 +78,11 @@ void	finish_map(char ***map, int l)
 			(*map)[i][j] = ' ';
 			j++;
 		}
-		printf("%d\n", i);
 		while ((*map)[i] && (*map)[i][k] && (*map)[i][k] == '0')
 		{
 			(*map)[i][k] = ' ';
 			k--;
 		}
-		printf("%d\n", i);
 		i++;
 	}
 }

@@ -26,7 +26,7 @@ typedef struct	s_data {
 		void	*mlx_ptr;
 		void	*mlx_win;
 		void	*img;
-		char	*addr;
+		int		*addr;
 		int		bits_per_pixel;
 		int		line_length;
 		int		endian;
@@ -39,7 +39,7 @@ typedef struct	s_data {
 		int		width;
 		int		height;
 		void	*img2;
-		char	*addr2;
+		int		*addr2;
 }				t_data;
 
 typedef	struct	s_list
@@ -56,9 +56,12 @@ typedef	struct	s_list
 		double	posX;
 		double	posY;
 		char	player_orientation;
+		int		startX;
+		int		startY;
 		int		line_nbr;
 		int		column_nbr;
 		int		error;
+		int		texerror;
 		double	time;
 		double	old_time;
 		double	planeX;

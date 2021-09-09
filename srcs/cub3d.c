@@ -13,7 +13,6 @@ int main(int argc, char **argv)
 		free_str_and_map(&config, config.map);
 		return (0);
 	}
-	printf("1\n");
 	init_mlx(&config, config.map);
 	free_str_and_map(&config, config.map);
     return (0);

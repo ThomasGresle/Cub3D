@@ -24,17 +24,20 @@ void	free_str_and_map(t_list	*config, char **map)
 
 int		clear_mlx(t_list *config)
 {
-	if (config->data.img)
-		mlx_destroy_image(config->data.mlx_ptr, config->data.img);
-	if (config->texture[0].img)
-		mlx_destroy_image(config->data.mlx_ptr, config->texture[0].img);
-	if (config->texture[1].img)
-		mlx_destroy_image(config->data.mlx_ptr, config->texture[1].img);
-	if (config->texture[2].img)
-		mlx_destroy_image(config->data.mlx_ptr, config->texture[2].img);
-	if (config->texture[3].img)
-		mlx_destroy_image(config->data.mlx_ptr, config->texture[3].img);
-	if (config->data.mlx_win)
-		mlx_destroy_window(config->data.mlx_ptr, config->data.mlx_win);
+	if (config->texerror == 0)
+	{
+		if (config->data.img)
+			mlx_destroy_image(config->data.mlx_ptr, config->data.img);
+		if (config->texture[0].img)
+			mlx_destroy_image(config->data.mlx_ptr, config->texture[0].img);
+		if (config->texture[1].img)
+			mlx_destroy_image(config->data.mlx_ptr, config->texture[1].img);
+		if (config->texture[2].img)
+			mlx_destroy_image(config->data.mlx_ptr, config->texture[2].img);
+		if (config->texture[3].img)
+			mlx_destroy_image(config->data.mlx_ptr, config->texture[3].img);
+		if (config->data.mlx_win)
+			mlx_destroy_window(config->data.mlx_ptr, config->data.mlx_win);
+	}
 	return (0);
 }

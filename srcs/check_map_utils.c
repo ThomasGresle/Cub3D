@@ -49,7 +49,7 @@ void	check_inside_map(char **map, t_list *config)
 
 	i = 0;
 	j = 0;
-	while (i <= config->line_nbr && map[i][j] && config->error == 0)
+	while (i < config->line_nbr && map[i][j] && config->error == 0)
 	{
 		while (map[i][j] && config->error == 0)
 		{
