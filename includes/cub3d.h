@@ -157,8 +157,6 @@ int			final_raycasting(t_list *config);
 void		init_texture_adress(t_list *config);
 void		get_and_check_texture(t_list *config);
 void		free_str_and_map(t_list	*config, char **map);
-void		correct_ceiling(t_list *config, char *str);
-void		correct_floor(t_list *config, char *str);
 void		init_mlx(t_list *config, char **map);
 int			clear_mlx(t_list *config);
 void		free_str_and_map(t_list	*config, char **map);
@@ -169,5 +167,6 @@ void		move_right_or_left(t_list *config, char **map);
 void		rotation_right(t_list *config);
 void		rotation_left(t_list *config);
 void		draw_text(t_list *config, char **map, int x, int y);
+int			final_color(t_list *config, char *str);
 
 #endif

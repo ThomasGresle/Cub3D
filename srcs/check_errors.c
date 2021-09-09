@@ -79,10 +79,10 @@ int		check_and_parse(int argc, char **argv, char ***map, t_list *config)
     ft_parse_file(argv, &(*map), &(*config));
     if (ft_check_config(config->ceiling_color) == 0)
 		return (0);
-	correct_ceiling(config, config->ceiling_color);
+	config->final_ceiling = final_color(config, config->ceiling_color);
 	if (ft_check_config(config->floor_color) == 0)
 		return (0);
-	correct_floor(config, config->floor_color);
+	config->final_floor = final_color(config, config->floor_color);
 	if (check_position(&(*map), &(*config)))
 		return (0);
 	if (ft_check_map(*map, &(*config)))
