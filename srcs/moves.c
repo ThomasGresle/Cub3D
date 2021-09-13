@@ -5,7 +5,7 @@ void	move_forward_or_back(t_list *config, char **map)
 	if (config->data.forward == 1)
 	{
 		if (map[(int)(config->posx + (config->dirx * config->movespeed
-				* 2))][(int)config->posy] == '0')
+					* 2))][(int)config->posy] == '0')
 			config->posx += config->dirx * config->movespeed;
 		if (map[(int)(config->posx)][(int)(config->posy +
 			(config->diry * config->movespeed * 2))] == '0')
@@ -30,7 +30,7 @@ void	move_right_or_left(t_list *config, char **map)
 				* (config->movespeed * 2))][(int)config->posy] == '0')
 			config->posx += config->diry * config->movespeed;
 		if (map[(int)config->posx][(int)(config->posy
-				- config->dirx * (config->movespeed * 2))] == '0')
+			- config->dirx * (config->movespeed * 2))] == '0')
 			config->posy -= config->dirx * config->movespeed;
 	}
 	if (config->data.left == 1)
@@ -39,7 +39,7 @@ void	move_right_or_left(t_list *config, char **map)
 				* (config->movespeed * 2))][(int)config->posy] == '0')
 			config->posx -= config->diry * config->movespeed;
 		if (map[(int)config->posx][(int)(config->posy + config->dirx
-				* (config->movespeed * 2))] == '0')
+			* (config->movespeed * 2))] == '0')
 			config->posy += config->dirx * config->movespeed;
 	}
 }
