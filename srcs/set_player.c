@@ -17,8 +17,8 @@ void	struct_init2(t_list *config)
 		config->deltadistx = 1;
 	else
 		config->deltadistx = sqrt(1 + (config->raydiry
-					* config->raydiry) / (config->raydirx *
-				config->raydirx));
+					* config->raydiry) / (config->raydirx
+					* config->raydirx));
 	if (config->raydirx == 0)
 		config->deltadisty = 0;
 	else if (config->raydiry == 0)
@@ -26,7 +26,7 @@ void	struct_init2(t_list *config)
 	else
 		config->deltadisty = sqrt(1 + (config->raydirx
 					* config->raydirx) / (config->raydiry
-				* config->raydiry));
+					* config->raydiry));
 }
 
 void	set_player(t_list *config)
