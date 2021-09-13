@@ -70,6 +70,13 @@ static int	ft_control(char **str, int fd, char **line, char **buf)
 	return (0);
 }
 
+void	norm_util(char *tmp, char *str, int fd, char *buf)
+{
+	tmp = str[fd];
+	str[fd] = ft_strjoin(str[fd], buf);
+	free(tmp);
+}
+
 int	get_next_line(int fd, char **line)
 {
 	int				ret;
@@ -82,14 +89,12 @@ int	get_next_line(int fd, char **line)
 	check = ft_control(&str[fd], fd, line, &buf);
 	if (check != 0)
 		return (check);
-	while ((stop_read(str[fd]) == 0 && (ret = read(fd, buf, BUFFER_SIZE))))
+	while (stop_read(str[fd]) == 0 && ret != 0)
 	{
+		ret = read(fd, buf, BUFFER_SIZE);
 		if (ret == -1)
 			return (-1);
 		buf[ret] = '\0';
-		tmp = str[fd];
-		str[fd] = ft_strjoin(str[fd], buf);
-		free(tmp);
 	}
 	if (cpy_until_sep(&str[fd], line, &buf) == 1 && ret == 0 && !(*str[fd]))
 	{
