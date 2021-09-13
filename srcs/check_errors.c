@@ -59,8 +59,8 @@ int		ft_check_map(char **line, t_list *config)
 	int i;
 	int j;
 	
-	i = config->startX;
-	j = config->startY;
+	i = config->startx;
+	j = config->starty;
 	if (line_nbr(line, &(*config)) == 0)
 		printf("Error\nLa map n'est pas assez grande\n");
 	else
@@ -77,12 +77,6 @@ int		check_and_parse(int argc, char **argv, char ***map, t_list *config)
 	if (ft_check_file(argv[1]) == 0)
 		return (0);
     ft_parse_file(argv, &(*map), &(*config));
-	/* if ((!(config->ceiling_color)) || config->ceiling_color[0] == '\0' ||
-		(!(config->floor_color)) || config->floor_color[0] == '\0')
-	{
-		printf("Error\nLa couleur du sol ou du plafond est incorrecte\n");
-		free_str_and_map(config, *map);
-	} */
 	if (ft_check_config(config->ceiling_color) == 0)
 		return (0);
 	config->final_ceiling = final_color(config, config->ceiling_color);

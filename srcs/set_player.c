@@ -10,42 +10,42 @@ void	struct_init(t_list *config)
 	config->final_floor = 0;
 	config->ceiling_color = NULL;
 	config->final_ceiling = 0;
-	config->posX = 0;
-	config->posY = 0;
+	config->posx = 0;
+	config->posy = 0;
 	config->line_nbr = 0;
 	config->column_nbr = 0;
 	config->error = 0;
 	config->time = 0;
 	config->old_time = 0;
-	config->planeX = 0;
-	config->planeY = 0;
-	config->dirX = 0;
-	config->dirY = 0;
+	config->planex = 0;
+	config->planey = 0;
+	config->dirx = 0;
+	config->diry = 0;
 	config->width = 800;
 	config->height = 600;
-	config->texWidth = 64;
-	config->texHeight = 64;
+	config->texwidth = 64;
+	config->texheight = 64;
 	struct_init3(config);
 }
 
 void	struct_init3(t_list *config)
 {
 	config->x = 0;
-	config->cameraX = 0;
-	config->rayDirX = 0;
-	config->rayDirY = 0;
-	config->mapX = 0;
-	config->mapY = 0;
-	config->sideDistX = 0;
-	config->sideDistY = 0;
-	config->deltaDistX = 0;
-	config->deltaDistY = 0;
-	config->stepX = 0;
-	config->stepY = 0;
+	config->camerax = 0;
+	config->raydirx = 0;
+	config->raydiry = 0;
+	config->mapx = 0;
+	config->mapy = 0;
+	config->sidedistx = 0;
+	config->sidedisty = 0;
+	config->deltadistx = 0;
+	config->deltadisty = 0;
+	config->stepx = 0;
+	config->stepy = 0;
 	config->side = 0;
-	config->lineHeight = 0;
-	config->drawStart = 0;
-	config->drawEnd = 0;
+	config->lineheight = 0;
+	config->drawstart = 0;
+	config->drawend = 0;
 	config->texture[0].img = NULL;
 	config->texture[1].img = NULL;
 	config->texture[2].img = NULL;
@@ -117,84 +117,84 @@ void	get_and_check_texture(t_list *config)
 
 void	struct_init2(t_list *config)
 {
-	config->perpWallDist = 0;
+	config->perpwalldist = 0;
 	config->hit = 0;
-	config->cameraX = 2 * config->x / (double)config->width - 1;
-	config->rayDirX = config->dirX + config->planeX * config->cameraX;
-	config->rayDirY = config->dirY + config->planeY * config->cameraX;
-	config->mapX = (int)config->posX;
-	config->mapY = (int)config->posY;
+	config->camerax = 2 * config->x / (double)config->width - 1;
+	config->raydirx = config->dirx + config->planex * config->camerax;
+	config->raydiry = config->diry + config->planey * config->camerax;
+	config->mapx = (int)config->posx;
+	config->mapy = (int)config->posy;
 	config->movespeed = 0.05;
 	config->rotspeed = 0.033 * 1;
-	if (config->rayDirY == 0)
-		config->deltaDistX = 0;
-	else if (config->rayDirX == 0)
-		config->deltaDistX = 1;
+	if (config->raydiry == 0)
+		config->deltadistx = 0;
+	else if (config->raydirx == 0)
+		config->deltadistx = 1;
 	else
-		config->deltaDistX = sqrt(1 + (config->rayDirY
-			* config->rayDirY) / (config->rayDirX *
-			config->rayDirX));
-	if (config->rayDirX == 0)
-		config->deltaDistY = 0;
-	else if (config->rayDirY == 0)
-		config->deltaDistY = 1;
+		config->deltadistx = sqrt(1 + (config->raydiry
+			* config->raydiry) / (config->raydirx *
+			config->raydirx));
+	if (config->raydirx == 0)
+		config->deltadisty = 0;
+	else if (config->raydiry == 0)
+		config->deltadisty = 1;
 	else
-		config->deltaDistY = sqrt(1 + (config->rayDirX *
-			config->rayDirX) / (config->rayDirY *
-			config->rayDirY));
+		config->deltadisty = sqrt(1 + (config->raydirx *
+			config->raydirx) / (config->raydiry *
+			config->raydiry));
 }
 
 void	set_player(t_list *config)
 {
-	config->posX = config->startX + 0.5;
-	config->posY = config->startY + 0.5;
+	config->posx = config->startx + 0.5;
+	config->posy = config->starty + 0.5;
 	if (config->player_orientation == 'N')
 	{
-		config->dirX = -1;
-		config->planeY = 0.66;
+		config->dirx = -1;
+		config->planey = 0.66;
 	}
 	else if (config->player_orientation == 'S')
 	{
-		config->dirX = 1;
-		config->planeY = -0.66;
+		config->dirx = 1;
+		config->planey = -0.66;
 	}
 	else if (config->player_orientation == 'E')
 	{
-		config->dirY = 1;
-		config->planeX = 0.66;
+		config->diry = 1;
+		config->planex = 0.66;
 	}
 	else
 	{
-		config->dirY = -1;
-		config->planeX = -0.66;
+		config->diry = -1;
+		config->planex = -0.66;
 	}
 }
 
-void	step_and_sideDist(t_list *config)
+void	step_and_sidedist(t_list *config)
 {
-	if (config->rayDirX < 0)
+	if (config->raydirx < 0)
 	{
-		config->stepX = -1;
-		config->sideDistX = (config->posX - config->mapX)
-							* config->deltaDistX;
+		config->stepx = -1;
+		config->sidedistx = (config->posx - config->mapx)
+							* config->deltadistx;
 	}
 	else
 	{
-		config->stepX = 1;
-		config->sideDistX = (config->mapX + 1.0 - config->posX)
-							* config->deltaDistX;
+		config->stepx = 1;
+		config->sidedistx = (config->mapx + 1.0 - config->posx)
+							* config->deltadistx;
 	}
-	if (config->rayDirY < 0)
+	if (config->raydiry < 0)
 	{
-		config->stepY = -1;
-		config->sideDistY = (config->posY - config->mapY)
-							* config->deltaDistY;
+		config->stepy = -1;
+		config->sidedisty = (config->posy - config->mapy)
+							* config->deltadisty;
 	}
 	else
 	{
-		config->stepY = 1;
-		config->sideDistY = (config->mapY + 1.0 - config->posY)
-							* config->deltaDistY;
+		config->stepy = 1;
+		config->sidedisty = (config->mapy + 1.0 - config->posy)
+							* config->deltadisty;
 	}
 }
 
@@ -202,19 +202,19 @@ void	check_hit(t_list *config, char **map)
 {
 	while (config->hit == 0)
 	{
-		if (config->sideDistX < config->sideDistY)
+		if (config->sidedistx < config->sidedisty)
         {
-			config->sideDistX += config->deltaDistX;
-			config->mapX += config->stepX;
+			config->sidedistx += config->deltadistx;
+			config->mapx += config->stepx;
 			config->side = 0;
         }
         else
         {
-			config->sideDistY += config->deltaDistY;
-			config->mapY += config->stepY;
+			config->sidedisty += config->deltadisty;
+			config->mapy += config->stepy;
 			config->side = 1;
         }
-		if (map[config->mapX][config->mapY] == '1') 
+		if (map[config->mapx][config->mapy] == '1') 
 			config->hit = 1;
 	}
 }
@@ -222,44 +222,44 @@ void	check_hit(t_list *config, char **map)
 void	distance_and_lines(t_list *config, char **map)
 {
 	if (config->side == 0)
-		config->perpWallDist = (config->mapX - config->posX +
-		(1 - config->stepX) / 2) / config->rayDirX;
+		config->perpwalldist = (config->mapx - config->posx +
+		(1 - config->stepx) / 2) / config->raydirx;
 	else
-		config->perpWallDist = (config->mapY - config->posY +
-		(1 - config->stepY) / 2) / config->rayDirY;
-	config->lineHeight = (int)(config->height / config->perpWallDist);
-	config->drawStart = -config->lineHeight / 2 + config->height / 2;
-	if (config->drawStart < 0)
-		config->drawStart = 0;
-	config->drawEnd = config->lineHeight / 2 + config->height / 2;
-	if (config->drawEnd >= config->height)
-		config->drawEnd = config->height - 1;
+		config->perpwalldist = (config->mapy - config->posy +
+		(1 - config->stepy) / 2) / config->raydiry;
+	config->lineheight = (int)(config->height / config->perpwalldist);
+	config->drawstart = -config->lineheight / 2 + config->height / 2;
+	if (config->drawstart < 0)
+		config->drawstart = 0;
+	config->drawend = config->lineheight / 2 + config->height / 2;
+	if (config->drawend >= config->height)
+		config->drawend = config->height - 1;
 }
 
 void	choice_texture(t_list *config, char **map)
 {
-	if (config->side == 0 && config->rayDirX < 0)
-		config->texNum = 0;
-	if (config->side == 0 && config->rayDirX >= 0)
-		config->texNum = 1;
-	if (config->side == 1 && config->rayDirY < 0)
-		config->texNum = 2;
-	if (config->side == 1 && config->rayDirY >= 0)
-		config->texNum = 3;
+	if (config->side == 0 && config->raydirx < 0)
+		config->texnum = 0;
+	if (config->side == 0 && config->raydirx >= 0)
+		config->texnum = 1;
+	if (config->side == 1 && config->raydiry < 0)
+		config->texnum = 2;
+	if (config->side == 1 && config->raydiry >= 0)
+		config->texnum = 3;
 }
 
 void	texture_calculation(t_list *config, char **map)
 {
 	if (config->side == 0)
-		config->wallX = config->posY + config->perpWallDist * config->rayDirY;
+		config->wallx = config->posy + config->perpwalldist * config->raydiry;
 	else
-		config->wallX = config->posX + config->perpWallDist * config->rayDirX;
-	config->wallX -= floor(config->wallX);
-	config->texX = (int)(config->wallX * (double)config->texture[config->texNum].width);
-	if (config->side == 0 && config->rayDirX > 0)
-		config->texX = config->texture[config->texNum].width - config->texX - 1;
-	if (config->side == 1 && config->rayDirY < 0)
-		config->texX = config->texture[config->texNum].width - config->texX - 1;
+		config->wallx = config->posx + config->perpwalldist * config->raydirx;
+	config->wallx -= floor(config->wallx);
+	config->texx = (int)(config->wallx * (double)config->texture[config->texnum].width);
+	if (config->side == 0 && config->raydirx > 0)
+		config->texx = config->texture[config->texnum].width - config->texx - 1;
+	if (config->side == 1 && config->raydiry < 0)
+		config->texx = config->texture[config->texnum].width - config->texx - 1;
 }
 
 void	init_draw(t_list *config, char **map)
@@ -267,13 +267,13 @@ void	init_draw(t_list *config, char **map)
 	int	i;
 	int	j;
 
-	config->drawEnd = config->height - config->drawStart;
+	config->drawend = config->height - config->drawstart;
 
-	i = config->drawEnd;
+	i = config->drawend;
 	j = -1;
-	while (++j < config->drawStart)
+	while (++j < config->drawstart)
 		config->data.addr[j * config->data.line_length / 4 + config->x] = config->final_ceiling;
-	if (j <= config->drawEnd)
+	if (j <= config->drawend)
 		draw_text(config, map, config->x, j);
 	j = i;
 	while (++j < config->height)
@@ -282,18 +282,18 @@ void	init_draw(t_list *config, char **map)
 
 void	draw_text(t_list *config, char **map, int x, int y)
 {
-	y = config->drawStart - 1;
+	y = config->drawstart - 1;
 	choice_texture(config, map);
-	config->step = 1.0 * config->texture[0].height / config->lineHeight;
+	config->step = 1.0 * config->texture[0].height / config->lineheight;
 	texture_calculation(config, map);
-	config->texPos = (config->drawStart - config->height / 2 +
-		config->lineHeight / 2) * config->step;
-	while (++y <= config->drawEnd)
+	config->texpos = (config->drawstart - config->height / 2 +
+		config->lineheight / 2) * config->step;
+	while (++y <= config->drawend)
 	{
-		config->texY = (int)config->texPos & (config->texture[config->texNum].height - 1);
-		config->texPos += config->step;
+		config->texy = (int)config->texpos & (config->texture[config->texnum].height - 1);
+		config->texpos += config->step;
 		if (y < config->height && x < config->width)
 			config->data.addr[y * config->data.line_length / 4 + x] = 
-			config->texture[config->texNum].addr[config->texY * config->texture[config->texNum].line_length / 4 + config->texX];
+			config->texture[config->texnum].addr[config->texy * config->texture[config->texnum].line_length / 4 + config->texx];
 	}
 }
