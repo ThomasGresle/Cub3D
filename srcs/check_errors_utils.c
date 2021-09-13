@@ -9,7 +9,7 @@ int	split_config(char *str, int *i)
 	while (str[(*i) + j] && (str[(*i) + j] == '-'
 			|| (str[(*i) + j] >= 48 && str[(*i) + j] <= 57)))
 		j++;
-	number = malloc(sizeof(char) * j);
+	number = malloc(sizeof(char) * (j + 1));
 	if (!(number))
 		return (0);
 	j = 0;

@@ -85,13 +85,15 @@ int	ft_check_file(char *file)
 		printf("Error\nLe fichier est un dossier");
 		return (0);
 	}
-	close(fd);
+	if (fd > 0)
+		close(fd);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
 		printf("Error\nLe fichier est invalide");
 		return (0);
 	}
-	close(fd);
+	if (fd > 0)
+		close(fd);
 	return (1);
 }

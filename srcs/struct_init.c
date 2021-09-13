@@ -63,6 +63,7 @@ void	struct_init4(t_list *config)
 	config->data.rotate_left = 0;
 	config->movespeed = 0;
 	config->rotspeed = 0;
+	config->texerror = 0;
 }
 
 void	init_texture_address(t_list *config)

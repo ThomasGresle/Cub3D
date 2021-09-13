@@ -26,7 +26,7 @@ int	ft_strlen_parsing(char *str)
 	{
 		i++;
 		j++;
-		if (str[i + 1] && str[i] == ' ')
+		if (str[i] && str[i + 1] && str[i] == ' ')
 		{
 			j++;
 			while (str[i] && str[i] == ' ')
@@ -35,7 +35,7 @@ int	ft_strlen_parsing(char *str)
 			}
 		}
 	}
-	if (str[i - 1] && str[i] == '\0' && str[i - 1] == ' ')
+	if (str[i] && str[i - 1] && str[i] == '\0' && str[i - 1] == ' ')
 		j--;
 	j++;
 	return (j);
