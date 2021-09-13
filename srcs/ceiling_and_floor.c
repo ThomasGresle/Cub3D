@@ -2,7 +2,7 @@
 
 int		atoi_color(char *str, int *i)
 {
-	int color;
+	int	color;
 
 	color = 0;
 	while (str[(*i)] && str[(*i)] != ' ')
@@ -13,6 +13,16 @@ int		atoi_color(char *str, int *i)
 	return (color);
 }
 
+void	error_color(int *i, char *str, t_list *config)
+{
+	if (str[(*i)] == '\0')
+	{
+		printf("Error\nIl manque un nombre dans les couleurs du sol ou du plafond\n");
+		free(str);
+		free_str_and_map(config, config->map);
+	}
+}
+
 int		final_color(t_list *config, char *str)
 {
 	int	color;
@@ -20,28 +30,13 @@ int		final_color(t_list *config, char *str)
 
 	color = 0;
 	i = 0;
-	if (str[i] == '\0')
-	{
-		printf("Error\nIl manque un nombre dans les couleurs du sol ou du plafond\n");
-		free(str);
-		free_str_and_map(config, config->map);
-	}
+	error_color(&i, str, config);
 	color = atoi_color(str, &i) * 65536;
 	i++;
-	if (str[i] == '\0')
-	{
-		printf("Error\nIl manque un nombre dans les couleurs du sol ou du plafond\n");
-		free(str);
-		free_str_and_map(config, config->map);
-	}
+	error_color(&i, str, config);
 	color += atoi_color(str, &i) * 256;
 	i++;
-	if (str[i] == '\0')
-	{
-		printf("Error\nIl manque un nombre dans les couleurs du sol ou du plafond\n");
-		free(str);
-		free_str_and_map(config, config->map);
-	}
+	error_color(&i, str, config);
 	color += atoi_color(str, &i);
 	free(str);
 	str = NULL;
