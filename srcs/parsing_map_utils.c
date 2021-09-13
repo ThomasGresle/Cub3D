@@ -2,16 +2,18 @@
 
 void	ft_malloc_map(char ***map, int i, int j, t_list *config)
 {
-	int k;
+	int	k;
 
 	k = 0;
 	config->line_nbr = i;
 	config->column_nbr = j;
-	if (!(*map = malloc(sizeof(char *) * (i + 1))))
+	*map = malloc(sizeof(char *) * (i + 1));
+	if (!(*map))
 		free_str_and_map(config, *map);
 	while (k < i)
 	{
-		if (!((*map)[k] = (char *)malloc(sizeof(char) * (j + 1))))
+		(*map)[k] = (char *)malloc(sizeof(char) * (j + 1));
+		if (!((*map)[k]))
 			free_str_and_map(config, *map);
 		k++;
 	}
@@ -19,7 +21,7 @@ void	ft_malloc_map(char ***map, int i, int j, t_list *config)
 
 void	copy_line_in_map(char **map, char *str, int l)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -40,7 +42,7 @@ void	copy_line_in_map(char **map, char *str, int l)
 
 void	create_map(char ***map, char **line, int i, int l)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (line[i])
