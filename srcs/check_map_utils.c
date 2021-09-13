@@ -2,13 +2,14 @@
 
 void	error_msg(int i, int j, t_list *config)
 {
-	printf("Error\nLa map est ouverte au niveau de la %de ligne, %de colonne\n", i + 1, j + 1);
+	printf("Error\nLa map est ouverte au niveau de la %de ligne, %de colonne\n",
+			i + 1, j + 1);
 	config->error = 1;
 }
 
 void	check_walls(char **map, int *i, int *j, t_list *config)
 {
-	int k;
+	int	k;
 
 	k = 0;
 	go_on_top_right(map, i, j, &(*config));
@@ -27,14 +28,18 @@ void	check_walls(char **map, int *i, int *j, t_list *config)
 
 void	go_on_top_right(char **map, int *i, int *j, t_list *config)
 {
-	while (config->error == 0 && map[(*i)][(*j)] && map[(*i) - 1][(*j)] && map[(*i)][(*j) + 1] && (map[(*i) - 1][(*j)] != '1' || map[(*i)][(*j) + 1] != '1'))
+	while (config->error == 0 && map[(*i)][(*j)] && map[(*i) - 1][(*j)]
+			&& map[(*i)][(*j) + 1] && (map[(*i) - 1][(*j)] != '1'
+			|| map[(*i)][(*j) + 1] != '1'))
 	{
 		(*i)--;
 		if (!(map[(*i) - 1][(*j)]))
 			error_msg(*i - 1, *j, &(*config));
 		if (map[(*i) - 1][(*j)] == '1')
 		{
-			while (map[(*i)][(*j)] && map[(*i)][(*j) + 1] && map[(*i)][(*j) + 1] == '0' && map[(*i) - 1][(*j)] && map[(*i) - 1][(*j)] == '1')
+			while (map[(*i)][(*j)] && map[(*i)][(*j) + 1]
+			&& map[(*i)][(*j) + 1] == '0' && map[(*i) - 1][(*j)]
+			&& map[(*i) - 1][(*j)] == '1')
 				(*j)++;
 			if (!(map[(*i)][(*j) + 1]))
 				error_msg(*i, *j + 1, &(*config));
@@ -44,8 +49,8 @@ void	go_on_top_right(char **map, int *i, int *j, t_list *config)
 
 void	check_inside_map(char **map, t_list *config)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -53,10 +58,12 @@ void	check_inside_map(char **map, t_list *config)
 	{
 		while (map[i][j] && config->error == 0)
 		{
-			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'E' && map[i][j] != 'W'
+			if (map[i][j] != '0' && map[i][j] != '1'
+			&& map[i][j] != 'E' && map[i][j] != 'W'
 			&& map[i][j] != ' ' && map[i][j] != 'S' && map[i][j] != 'N')
 			{
-				printf("Error\nIl y a un caractere incorrect dans la map: %c a la %de ligne %de colonne\n", map[i][j], i + 1, j + 1);
+				printf("Error\nIl y a un caractere incorrect dans la map: %c a la %de ligne %de colonne\n",
+						map[i][j], i + 1, j + 1);
 				config->error = 1;
 			}
 			j++;
@@ -71,12 +78,15 @@ int		ft_check_file(char *file)
 	int fd;
 
 	fd = 0;
-	if ((fd = open(file, O_DIRECTORY)) != -1)
+	fd = open(file, O_DIRECTORY);
+	if (fd == -1)
 	{
 		printf("Error\nLe fichier est un dossier");
 		return (0);
 	}
-	if ((fd = open(file, O_RDONLY)) == -1)
+	close(fd);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 	{
 		printf("Error\nLe fichier est invalide");
 		return (0);
