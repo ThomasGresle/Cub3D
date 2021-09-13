@@ -3,7 +3,7 @@
 void	error_msg(int i, int j, t_list *config)
 {
 	printf("Error\nLa map est ouverte au niveau de la %de ligne, %de colonne\n",
-			i + 1, j + 1);
+		i + 1, j + 1);
 	config->error = 1;
 }
 
@@ -62,8 +62,8 @@ void	check_inside_map(char **map, t_list *config)
 			&& map[i][j] != 'E' && map[i][j] != 'W'
 			&& map[i][j] != ' ' && map[i][j] != 'S' && map[i][j] != 'N')
 			{
-				printf("Error\nIl y a un caractere incorrect dans la map: %c a la %de ligne %de colonne\n",
-						map[i][j], i + 1, j + 1);
+				printf("Error\nCaractere incorrect dans la map: %c a la %de ligne %de colonne\n",
+					map[i][j], i + 1, j + 1);
 				config->error = 1;
 			}
 			j++;
