@@ -150,7 +150,7 @@ void		struct_init(t_list *config);
 void		struct_init2(t_list *config);
 void		struct_init3(t_list *config);
 void		struct_init4(t_list *config);
-void		step_and_sideDist(t_list *config);
+void		step_and_sidedist(t_list *config);
 void		check_hit(t_list *config, char **map);
 void		distance_and_lines(t_list *config, char **map);
 int			final_raycasting(t_list *config);

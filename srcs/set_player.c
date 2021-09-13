@@ -17,16 +17,16 @@ void	struct_init2(t_list *config)
 		config->deltadistx = 1;
 	else
 		config->deltadistx = sqrt(1 + (config->raydiry
-			* config->raydiry) / (config->raydirx *
-			config->raydirx));
+				* config->raydiry) / (config->raydirx *
+				config->raydirx));
 	if (config->raydirx == 0)
 		config->deltadisty = 0;
 	else if (config->raydiry == 0)
 		config->deltadisty = 1;
 	else
-		config->deltadisty = sqrt(1 + (config->raydirx *
-			config->raydirx) / (config->raydiry *
-			config->raydiry));
+		config->deltadisty = sqrt(1 + (config->raydirx
+				* config->raydirx) / (config->raydiry
+				* config->raydiry));
 }
 
 void	set_player(t_list *config)
@@ -55,30 +55,30 @@ void	set_player(t_list *config)
 	}
 }
 
-void	step_and_sideDist(t_list *config)
+void	step_and_sidedist(t_list *config)
 {
 	if (config->raydirx < 0)
 	{
 		config->stepx = -1;
 		config->sidedistx = (config->posx - config->mapx)
-							* config->deltadistx;
+				* config->deltadistx;
 	}
 	else
 	{
 		config->stepx = 1;
 		config->sidedistx = (config->mapx + 1.0 - config->posx)
-							* config->deltadistx;
+				* config->deltadistx;
 	}
 	if (config->raydiry < 0)
 	{
 		config->stepy = -1;
 		config->sidedisty = (config->posy - config->mapy)
-							* config->deltadisty;
+				* config->deltadisty;
 	}
 	else
 	{
 		config->stepy = 1;
 		config->sidedisty = (config->mapy + 1.0 - config->posy)
-							* config->deltadisty;
+				* config->deltadisty;
 	}
 }

@@ -6,7 +6,7 @@ int	final_raycasting(t_list *config)
 	while (config->x < config->width)
 	{
 		struct_init2(config);
-		step_and_sideDist(config);
+		step_and_sidedist(config);
 		check_hit(config, config->map);
 		distance_and_lines(config, config->map);
 		init_draw(config, config->map);
