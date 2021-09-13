@@ -31,6 +31,7 @@ SRCS		=	srcs/cub3d.c \
 			srcs/struct_config.c \
 			srcs/struct_walls.c \
 			srcs/mlx_utils.c \
+			srcs/copy_utils_norm.c \
 
 OBJS		=	$(SRCS:.c=.o)
 

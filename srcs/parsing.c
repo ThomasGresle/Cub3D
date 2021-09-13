@@ -34,9 +34,7 @@ void	ft_copy_file(char **argv, char ***line, int *error)
 		if (buf[0] == '\n')
 			linenbr++;
 	}
-	close(fd);
-	free(buf);
-	linenbr++;
+	util_norm_copy(fd, buf, &linenbr);
 	*line = malloc(sizeof(char *) * (linenbr + 1));
 	if (!(*line))
 		return ;
