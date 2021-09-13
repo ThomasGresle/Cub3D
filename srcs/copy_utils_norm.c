@@ -4,7 +4,7 @@ void	util_norm_copy(int fd, char *buf, int *linenbr)
 {
 	close(fd);
 	free(buf);
-	linenbr++;
+	(*linenbr)++;
 }
 
 void	util_norm_copy2(int *ret, int *fd, char *buf, int *linenbr)
