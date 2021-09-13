@@ -23,6 +23,7 @@ void	get_and_check_texture2(t_list *config)
 
 void	get_and_check_texture(t_list *config)
 {
+	config->texerror = 0;
 	config->texture[0].img = mlx_xpm_file_to_image(config->data.mlx_ptr,
 			config->north_t, &(config->texture[0].width),
 			&(config->texture[0].height));
