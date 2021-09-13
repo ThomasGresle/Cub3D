@@ -6,12 +6,15 @@ int	split_config(char *str, int *i)
 	int		j;
 
 	j = 0;
-	while (str[(*i) + j] && (str[(*i) + j] == '-' || (str[(*i) + j] >= 48 && str[(*i) + j] <= 57)))
+	while (str[(*i) + j] && (str[(*i) + j] == '-' 
+		|| (str[(*i) + j] >= 48 && str[(*i) + j] <= 57)))
 		j++;
-	if (!(number = malloc(sizeof(char) * j)))
+	number = malloc(sizeof(char) * j);
+	if (!(number))
 		return (0);
 	j = 0;
-	while (str[(*i)] && ((str[(*i)] >= 48 && str[(*i)] <= 57) || str[(*i)] == '-'))
+	while (str[(*i)] && ((str[(*i)] >= 48 && str[(*i)] <= 57) 
+		|| str[(*i)] == '-'))
 	{
 		number[j] = str[(*i)];
 		(*i)++;
@@ -24,8 +27,8 @@ int	split_config(char *str, int *i)
 
 int	line_nbr(char **map, t_list *config)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -43,11 +46,30 @@ int	line_nbr(char **map, t_list *config)
 	return (1);
 }
 
-int		check_position(char ***map, t_list *config)
+void	position_found(char ***map, int *position, int *i, int *j, t_list *config)
 {
-	int i;
-	int j;
-	int position;
+	if ((*map)[(*i)][(*j)] && ((*map)[(*i)][(*j)] == 'W' || (*map)[(*i)][(*j)] == 'E'
+		|| (*map)[(*i)][(*j)] == 'S' || (*map)[(*i)][(*j)] == 'N'))
+		{
+			(*position)++;
+			config->startx = *i;
+			config->starty = *j;
+			config->player_orientation = (*map)[(*i)][(*j)];
+			(*map)[(*i)][(*j)] = '0';
+			(*j)++;
+		}
+		if (!((*map)[(*i)][(*j)]))
+		{
+			(*i)++;
+			*j = 0;
+		}
+}
+
+int	check_position(char ***map, t_list *config)
+{
+	int	i;
+	int	j;
+	int	position;
 
 	i = 0;
 	j = 0;
@@ -59,25 +81,11 @@ int		check_position(char ***map, t_list *config)
 		{
 			j++;
 		}
-		if ((*map)[i][j] && ((*map)[i][j] == 'W' || (*map)[i][j] == 'E'
-		|| (*map)[i][j] == 'S' || (*map)[i][j] == 'N'))
-		{
-			position++;
-			config->startx = i;
-			config->starty = j;
-			config->player_orientation = (*map)[i][j];
-			(*map)[i][j] = '0';
-			j++;
-		}
-		if (!((*map)[i][j]))
-		{
-			i++;
-			j = 0;
-		}
+		position_found(map, &position, &i, &j, config);
 	}
 	if (position != 1)
 	{
-		printf("Error\nIl y a une erreur concernant la position du joueur dans la map\n");
+		printf("Error\nPosition du joueur incorrecte\n");
 		return (1);
 	}
 	return (0);
