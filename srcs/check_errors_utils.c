@@ -46,12 +46,13 @@ int	line_nbr(char **map, t_list *config)
 	return (1);
 }
 
-void	position_found(int *position, int *i, 
+void	position_found(int *position, int *i,
 			int *j, t_list *config)
 {
 	if ((config->map)[(*i)][(*j)] && ((config->map)[(*i)][(*j)] == 'W'
 		|| (config->map)[(*i)][(*j)] == 'E'
-		|| (config->map)[(*i)][(*j)] == 'S' || (config->map)[(*i)][(*j)] == 'N'))
+		|| (config->map)[(*i)][(*j)] == 'S'
+		|| (config->map)[(*i)][(*j)] == 'N'))
 	{
 		(*position)++;
 		config->startx = *i;
