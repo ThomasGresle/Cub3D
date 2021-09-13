@@ -1,5 +1,16 @@
 #include "../includes/cub3d.h"
 
+void	norm_utils_copy(int *linenbr, int fd, char ***line, int *i)
+{
+	while (*linenbr > 0)
+	{
+		get_next_line(fd, &(*line)[(*i)]);
+		(*linenbr)--;
+		(*i)++;
+	}
+	close(fd);
+}
+
 void	ft_copy_file(char **argv, char ***line, int *error)
 {
 	int		i;
@@ -11,7 +22,8 @@ void	ft_copy_file(char **argv, char ***line, int *error)
 	i = 0;
 	ret = 1;
 	linenbr = 0;
-	if (!(buf = malloc(sizeof(char))))
+	buf = malloc(sizeof(char));
+	if (!(buf))
 		return ;
 	fd = open(argv[1], O_RDONLY);
 	while (ret)
@@ -25,17 +37,11 @@ void	ft_copy_file(char **argv, char ***line, int *error)
 	close(fd);
 	free(buf);
 	linenbr++;
-	if (!(*line = malloc(sizeof(char *) * (linenbr + 1))))
+	*line = malloc(sizeof(char *) * (linenbr + 1));
+	if (!(*line))
 		return ;
 	(*line)[linenbr] = '\0';
 	fd = open(argv[1], O_RDONLY);
-	while (linenbr > 0)
-	{
-		get_next_line(fd, &(*line)[i]);
-		linenbr--;
-		i++;
-	}
-	close(fd);
 	return ;
 }
 
