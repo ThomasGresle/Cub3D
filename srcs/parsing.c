@@ -26,14 +26,7 @@ void	ft_copy_file(char **argv, char ***line, int *error)
 	if (!(buf))
 		return ;
 	fd = open(argv[1], O_RDONLY);
-	while (ret)
-	{
-		ret = read(fd, buf, sizeof(char));
-		if (ret == -1)
-			return ;
-		if (buf[0] == '\n')
-			linenbr++;
-	}
+	util_norm_copy2(&ret, &fd, buf, &linenbr);
 	util_norm_copy(fd, buf, &linenbr);
 	*line = malloc(sizeof(char *) * (linenbr + 1));
 	if (!(*line))

@@ -171,5 +171,6 @@ int			final_color(t_list *config, char *str);
 void		switch_images(t_list *config);
 void		erreur_mlx_init(t_list *config, char **map);
 void		util_norm_copy(int fd, char *buf, int *linenbr);
+void		util_norm_copy2(int *ret, int *fd, char *buf, int *linenbr);
 
 #endif
