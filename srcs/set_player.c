@@ -170,7 +170,7 @@ void	set_player(t_list *config)
 	}
 }
 
-void	step_and_sidedist(t_list *config)
+void	step_and_sideDist(t_list *config)
 {
 	if (config->raydirx < 0)
 	{
