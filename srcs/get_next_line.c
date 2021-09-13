@@ -70,7 +70,7 @@ static int	ft_control(char **str, int fd, char **line, char **buf)
 	return (0);
 }
 
-void	norm_util(char *tmp, char *str, int fd, char *buf)
+void	norm_util(char *tmp, char **str, int fd, char *buf)
 {
 	tmp = str[fd];
 	str[fd] = ft_strjoin(str[fd], buf);
@@ -95,6 +95,7 @@ int	get_next_line(int fd, char **line)
 		if (ret == -1)
 			return (-1);
 		buf[ret] = '\0';
+		norm_util(tmp, str, fd, buf);
 	}
 	if (cpy_until_sep(&str[fd], line, &buf) == 1 && ret == 0 && !(*str[fd]))
 	{

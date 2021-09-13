@@ -27,7 +27,7 @@ void    ft_copy_file(char **argv, char ***line, int *error)
     linenbr++;
     if(!(*line = malloc(sizeof(char *) * (linenbr + 1))))
         return ;
-    (*line)[linenbr] = '\0';
+    (*line)[linenbr] = "\0";
     fd = open(argv[1], O_RDONLY);
     while (linenbr > 0)
     {
