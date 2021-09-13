@@ -102,7 +102,6 @@ typedef struct s_list
 	double	rotspeed;
 }				t_list;
 
-void		erreur_mlx_init(t_list *config, char **map);
 int			ft_check_file(char *file);
 char		**parse(int fd);
 size_t		ft_strlen(const char *str);
@@ -169,5 +168,7 @@ void		rotation_right(t_list *config);
 void		rotation_left(t_list *config);
 void		draw_text(t_list *config, char **map, int x, int y);
 int			final_color(t_list *config, char *str);
+void		switch_images(t_list *config);
+void		erreur_mlx_init(t_list *config, char **map);
 
 #endif
