@@ -8,14 +8,13 @@ void	ft_malloc_map(char ***map, int i, int j, t_list *config)
 	config->line_nbr = i;
 	config->column_nbr = j;
 	if (!(*map = malloc(sizeof(char *) * (i + 1))))
-		return ;
+		free_str_and_map(config, *map);
 	while (k < i)
 	{
 		if (!((*map)[k] = (char *)malloc(sizeof(char) * (j + 1))))
-			return ;
+			free_str_and_map(config, *map);
 		k++;
 	}
-	(*map)[k] = malloc(sizeof(char) * 1);
 }
 
 void	copy_line_in_map(char **map, char *str, int l)

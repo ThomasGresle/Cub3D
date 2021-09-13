@@ -4,7 +4,7 @@ void	free_str_and_map(t_list	*config, char **map)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (config->north_t)
 		free(config->north_t);
 	if (config->south_t)
@@ -15,8 +15,12 @@ void	free_str_and_map(t_list	*config, char **map)
 		free(config->east_t);
 	if (map)
 	{
-		while (++i < config->line_nbr)
+		while (map[i])
+		{
 			free(map[i]);
+			i++;
+		}
+		free(map[i]);
 		free(map);
 	}
 	clear_mlx(config);
@@ -39,5 +43,5 @@ int		clear_mlx(t_list *config)
 		if (config->data.mlx_win)
 			mlx_destroy_window(config->data.mlx_ptr, config->data.mlx_win);
 	}
-	return (0);
+	exit(0);
 }

@@ -21,8 +21,8 @@ void	struct_init(t_list *config)
 	config->planeY = 0;
 	config->dirX = 0;
 	config->dirY = 0;
-	config->width = 640;
-	config->height = 480;
+	config->width = 800;
+	config->height = 600;
 	config->texWidth = 64;
 	config->texHeight = 64;
 	struct_init3(config);
@@ -125,7 +125,7 @@ void	struct_init2(t_list *config)
 	config->mapX = (int)config->posX;
 	config->mapY = (int)config->posY;
 	config->movespeed = 0.05;
-	config->rotspeed = 0.033 * 0.5;
+	config->rotspeed = 0.033 * 1;
 	if (config->rayDirY == 0)
 		config->deltaDistX = 0;
 	else if (config->rayDirX == 0)

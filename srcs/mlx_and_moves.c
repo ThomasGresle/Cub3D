@@ -31,6 +31,8 @@ int		press_keyboard(int keycode, t_list *config)
 		config->data.rotate_left = 1;
 	else if (keycode == ROTATE_RIGHT)
 		config->data.rotate_right = 1;
+	else if (keycode == 65307)
+		free_str_and_map(config, config->map);
 	return (1);
 }
 
@@ -68,8 +70,8 @@ void	init_mlx(t_list *config, char **map)
 							&config->data.line_length, &config->data.endian);
 		mlx_hook(config->data.mlx_win, 33, 1L << 17, clear_mlx, config);
 		mlx_hook(config->data.mlx_win, 2, 1L << 0, press_keyboard, config);
-		mlx_loop_hook(config->data.mlx_ptr, final_raycasting, config);
 		mlx_hook(config->data.mlx_win, 3, 1L << 1, release_keyboard, config);
+		mlx_loop_hook(config->data.mlx_ptr, final_raycasting, config);
 		mlx_loop(config->data.mlx_ptr);
 	}
 }
