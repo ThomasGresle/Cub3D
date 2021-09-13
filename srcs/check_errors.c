@@ -2,9 +2,9 @@
 
 int	ft_check_argv(char **argv)
 {
-    int	i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	if (argv[1][0] == '.' || argv[1][0] == '\0')
 		return (0);
 	while (argv[1][i] && argv[1][i] != '.')
@@ -19,13 +19,13 @@ int	ft_check_argv(char **argv)
 
 int	ft_check_args(int argc, char **argv)
 {
-    if (argc != 2)
+	if (argc != 2)
 	{
-        printf("Error\nLe nombre d'arguments est incorrect\n");
+		printf("Error\nLe nombre d'arguments est incorrect\n");
 		return (0);
 	}
-    else if (ft_check_argv(argv) == 0)
-    {
+	else if (ft_check_argv(argv) == 0)
+	{
 		printf("Error\nLe chemin du fichier a parser est incorrect\n");
 		return (0);
 	}
