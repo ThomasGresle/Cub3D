@@ -17,8 +17,8 @@ int	ft_strcmp(char *s1, char *s2, int j)
 
 int	ft_strlen_parsing(char *str)
 {
-    int	i;
-    int	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -43,8 +43,8 @@ int	ft_strlen_parsing(char *str)
 
 void	ft_strcpy_parsing(char *dst, char *str)
 {
-    int	i;
-    int	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -52,7 +52,8 @@ void	ft_strcpy_parsing(char *dst, char *str)
 		j++;
 	while (str[j] && str[j] == ' ')
 		j++;
-	while ((str[j] && str[j] >= 33 && str[j] <= 126) || (str[j] >= '0' && str[j] <= '9'))
+	while ((str[j] && str[j] >= 33 && str[j] <= 126)
+		|| (str[j] >= '0' && str[j] <= '9'))
 	{
 		dst[i] = str[j];
 		i++;
