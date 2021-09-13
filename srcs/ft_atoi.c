@@ -27,7 +27,7 @@ static	int	check(const char *str, int *i, int *erreur)
 		return (1);
 }
 
-int			ft_atoi_and_free(char *str)
+int	ft_atoi_and_free(char *str)
 {
 	int	i;
 	int	resultat;
