@@ -6,15 +6,15 @@ int	split_config(char *str, int *i)
 	int		j;
 
 	j = 0;
-	while (str[(*i) + j] && (str[(*i) + j] == '-' 
-		|| (str[(*i) + j] >= 48 && str[(*i) + j] <= 57)))
+	while (str[(*i) + j] && (str[(*i) + j] == '-'
+			|| (str[(*i) + j] >= 48 && str[(*i) + j] <= 57)))
 		j++;
 	number = malloc(sizeof(char) * j);
 	if (!(number))
 		return (0);
 	j = 0;
-	while (str[(*i)] && ((str[(*i)] >= 48 && str[(*i)] <= 57) 
-		|| str[(*i)] == '-'))
+	while (str[(*i)] && ((str[(*i)] >= 48 && str[(*i)] <= 57)
+			|| str[(*i)] == '-'))
 	{
 		number[j] = str[(*i)];
 		(*i)++;
@@ -46,23 +46,25 @@ int	line_nbr(char **map, t_list *config)
 	return (1);
 }
 
-void	position_found(char ***map, int *position, int *i, int *j, t_list *config)
+void	position_found(int *position, int *i, 
+			int *j, t_list *config)
 {
-	if ((*map)[(*i)][(*j)] && ((*map)[(*i)][(*j)] == 'W' || (*map)[(*i)][(*j)] == 'E'
-		|| (*map)[(*i)][(*j)] == 'S' || (*map)[(*i)][(*j)] == 'N'))
-		{
-			(*position)++;
-			config->startx = *i;
-			config->starty = *j;
-			config->player_orientation = (*map)[(*i)][(*j)];
-			(*map)[(*i)][(*j)] = '0';
-			(*j)++;
-		}
-		if (!((*map)[(*i)][(*j)]))
-		{
-			(*i)++;
-			*j = 0;
-		}
+	if ((config->map)[(*i)][(*j)] && ((config->map)[(*i)][(*j)] == 'W'
+		|| (config->map)[(*i)][(*j)] == 'E'
+		|| (config->map)[(*i)][(*j)] == 'S' || (config->map)[(*i)][(*j)] == 'N'))
+	{
+		(*position)++;
+		config->startx = *i;
+		config->starty = *j;
+		config->player_orientation = (config->map)[(*i)][(*j)];
+		(config->map)[(*i)][(*j)] = '0';
+		(*j)++;
+	}
+	if (!((config->map)[(*i)][(*j)]))
+	{
+		(*i)++;
+		*j = 0;
+	}
 }
 
 int	check_position(char ***map, t_list *config)
@@ -81,7 +83,7 @@ int	check_position(char ***map, t_list *config)
 		{
 			j++;
 		}
-		position_found(map, &position, &i, &j, config);
+		position_found(&position, &i, &j, config);
 	}
 	if (position != 1)
 	{
