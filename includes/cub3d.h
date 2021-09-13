@@ -102,8 +102,7 @@ typedef struct s_list
 	double	rotspeed;
 }				t_list;
 
-int			release_keyboard(int keycode, t_list *config);
-int			press_keyboard(int keycode, t_list *config);
+void		erreur_mlx_init(t_list *config, char **map);
 int			ft_check_file(char *file);
 char		**parse(int fd);
 size_t		ft_strlen(const char *str);
