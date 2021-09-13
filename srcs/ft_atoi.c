@@ -8,7 +8,7 @@ static	int	check(const char *str, int *i, int *erreur)
 		(*i)++;
 	}
 	if (str[*i] == '\0' || (str[*i] != '+'
-		&& str[*i] != '-' && (str[*i] < 48 && str[*i] > 57)))
+			&& str[*i] != '-' && (str[*i] < 48 && str[*i] > 57)))
 	{
 		*erreur = 1;
 		return (0);
