@@ -26,7 +26,7 @@ void	free_str_and_map(t_list	*config, char **map)
 	clear_mlx(config);
 }
 
-int		clear_mlx(t_list *config)
+int	clear_mlx(t_list *config)
 {
 	if (config->texerror == 0)
 	{
