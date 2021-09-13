@@ -154,7 +154,7 @@ void		step_and_sideDist(t_list *config);
 void		check_hit(t_list *config, char **map);
 void		distance_and_lines(t_list *config, char **map);
 int			final_raycasting(t_list *config);
-void		init_texture_adress(t_list *config);
+void		init_texture_address(t_list *config);
 void		get_and_check_texture(t_list *config);
 void		free_str_and_map(t_list	*config, char **map);
 void		init_mlx(t_list *config, char **map);
@@ -172,5 +172,7 @@ void		switch_images(t_list *config);
 void		erreur_mlx_init(t_list *config, char **map);
 void		util_norm_copy(int fd, char *buf, int *linenbr);
 void		util_norm_copy2(int *ret, int *fd, char *buf, int *linenbr);
+void		choice_texture(t_list *config, char **map);
+void		texture_calculation(t_list *config, char **map);
 
 #endif
