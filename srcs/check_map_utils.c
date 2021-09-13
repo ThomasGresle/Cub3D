@@ -74,9 +74,9 @@ void	check_inside_map(char **map, t_list *config)
 	}
 }
 
-int		ft_check_file(char *file)
+int	ft_check_file(char *file)
 {
-	int fd;
+	int	fd;
 
 	fd = 0;
 	fd = open(file, O_DIRECTORY);
