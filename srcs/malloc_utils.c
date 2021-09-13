@@ -13,7 +13,8 @@ void	malloc_string_struct(t_list *options, char **line)
 			malloc_f(options, line[i]);
 		if (line[i] && line[i][0] && line[i][0] == 'N')
 			malloc_n(options, line[i]);
-		if (line[i] && line[i][0] && line[i][1] && line[i][0] == 'S' && line[i][1] == 'O')
+		if (line[i] && line[i][0] && line[i][1]
+			&& line[i][0] == 'S' && line[i][1] == 'O')
 			malloc_s(options, line[i]);
 		if (line[i] && line[i][0] && line[i][0] == 'E')
 			malloc_e(options, line[i]);
@@ -25,7 +26,7 @@ void	malloc_string_struct(t_list *options, char **line)
 
 void	free_array(char ***array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while ((*array)[i])
