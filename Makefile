@@ -30,6 +30,7 @@ SRCS		=	srcs/cub3d.c \
 			srcs/set_player.c \
 			srcs/struct_config.c \
 			srcs/struct_walls.c \
+			srcs/mlx_utils.c \
 
 OBJS		=	$(SRCS:.c=.o)
 
