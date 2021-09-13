@@ -71,8 +71,8 @@ void	draw_text(t_list *config, char **map, int x, int y)
 			& (config->texture[config->texnum].height - 1);
 		config->texpos += config->step;
 		if (y < config->height && x < config->width)
-			config->data.addr[y * config->data.line_length / 4 + x] =
-				config->texture[config->texnum].addr[config->texy
+			config->data.addr[y * config->data.line_length / 4 + x]
+				= config->texture[config->texnum].addr[config->texy
 				* config->texture[config->texnum].line_length / 4
 				+ config->texx];
 	}
