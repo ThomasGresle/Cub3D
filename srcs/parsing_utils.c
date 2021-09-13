@@ -55,9 +55,7 @@ void	ft_strcpy_parsing(char *dst, char *str)
 	while ((str[j] && str[j] >= 33 && str[j] <= 126)
 		|| (str[j] >= '0' && str[j] <= '9'))
 	{
-		dst[i] = str[j];
-		i++;
-		j++;
+		dst[i++] = str[j++];
 		while (str[j] && str[j] == ' ')
 		{
 			j++;
