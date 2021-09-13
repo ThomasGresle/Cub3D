@@ -1,6 +1,6 @@
 #include "../includes/cub3d.h"
 
-int		atoi_color(char *str, int *i)
+int	atoi_color(char *str, int *i)
 {
 	int	color;
 
@@ -17,13 +17,13 @@ void	error_color(int *i, char *str, t_list *config)
 {
 	if (str[(*i)] == '\0')
 	{
-		printf("Error\nIl manque un nombre dans les couleurs du sol ou du plafond\n");
+		printf("Error\nSol ou plafond incorrect\n");
 		free(str);
 		free_str_and_map(config, config->map);
 	}
 }
 
-int		final_color(t_list *config, char *str)
+int	final_color(t_list *config, char *str)
 {
 	int	color;
 	int	i;
