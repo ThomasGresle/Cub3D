@@ -12,7 +12,8 @@ int	final_raycasting(t_list *config)
 		init_draw(config, config->map);
 		config->x++;
 	}
-	mlx_put_image_to_window(config->data.mlx_ptr, config->data.mlx_win, config->data.img, 0, 0);
+	mlx_put_image_to_window(config->data.mlx_ptr,
+		config->data.mlx_win, config->data.img, 0, 0);
 	move_forward_or_back(config, config->map);
 	move_right_or_left(config, config->map);
 	rotation_right(config);
