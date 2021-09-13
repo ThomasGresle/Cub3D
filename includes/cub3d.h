@@ -22,7 +22,7 @@
 # define RIGHT			100
 # define LEFT			97
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*mlx_ptr;
 	void	*mlx_win;
 	void	*img;
@@ -42,7 +42,7 @@ typedef struct	s_data {
 	int		*addr2;
 }				t_data;
 
-typedef struct	s_list
+typedef struct s_list
 {
 	char	**map;
 	char	*north_t;
@@ -121,9 +121,9 @@ void		malloc_e(t_list *options, char *line);
 void		malloc_w(t_list *options, char *line);
 void		malloc_c(t_list *options, char *line);
 void		malloc_f(t_list *options, char *line);
-int 		ft_strlen_parsing(char *str);
-void    	ft_strcpy_parsing(char *dest, char *str);
-void	    ft_strcpy_numbers(char *dst, char *str);
+int			ft_strlen_parsing(char *str);
+void		ft_strcpy_parsing(char *dest, char *str);
+void		ft_strcpy_numbers(char *dst, char *str);
 int			ft_check_config(char *str);
 void		free_array(char ***array);
 void		ft_malloc_map(char ***map, int i, int j, t_list *config);
