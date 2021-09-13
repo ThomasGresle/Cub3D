@@ -80,7 +80,7 @@ int	ft_check_file(char *file)
 
 	fd = 0;
 	fd = open(file, O_DIRECTORY);
-	if (fd == -1)
+	if (fd != -1)
 	{
 		printf("Error\nLe fichier est un dossier");
 		return (0);
