@@ -100,6 +100,13 @@ typedef struct s_list
 	double	texpos;
 	double	movespeed;
 	double	rotspeed;
+	int		north;
+	int		south;
+	int		east;
+	int		west;
+	int		c;
+	int		f;
+	int		count;
 }				t_list;
 
 int			ft_check_file(char *file);
@@ -174,5 +181,8 @@ void		util_norm_copy(int fd, char *buf, int *linenbr);
 void		util_norm_copy2(int *ret, int *fd, char *buf, int *linenbr);
 void		choice_texture(t_list *config, char **map);
 void		texture_calculation(t_list *config, char **map);
+void		ft_check_options(char **map, t_list *config);
+void		ft_check_text(char *str, t_list *config, int *error);
+void		check_errors(t_list *config, char **map);
 
 #endif

@@ -35,9 +35,9 @@ static char	cpy_until_sep(char **str, char **line, char **buf)
 	i = 0;
 	j = 0;
 	free(*buf);
-	while ((*str)[i] && (*str)[i] != '\n')
+	while ((*str) && (*str)[i] && (*str)[i] != '\n')
 		i++;
-	*line = malloc(sizeof(char) * (i + 1));
+	*line = malloc(sizeof(char) * (i + BUFFER_SIZE));
 	if (!(*line))
 		return (-1);
 	while ((*str)[j] && j < i)
@@ -45,7 +45,7 @@ static char	cpy_until_sep(char **str, char **line, char **buf)
 		(*line)[j] = (*str)[j];
 		j++;
 	}
-	(*line)[j] = '\0';
+	(*line)[j] = 0;
 	tmp = *str;
 	(*str) = ft_substr((*str), i + 1, ft_strlen((*str)));
 	free(tmp);
@@ -94,7 +94,7 @@ int	get_next_line(int fd, char **line)
 		ret = read(fd, buf, BUFFER_SIZE);
 		if (ret == -1)
 			return (-1);
-		buf[ret] = '\0';
+		buf[ret] = 0;
 		tmp = str[fd];
 		str[fd] = ft_strjoin(str[fd], buf);
 		free(tmp);

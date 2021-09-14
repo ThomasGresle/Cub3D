@@ -40,7 +40,7 @@ char	*ft_strdup(const char *s1)
 		str[i] = s1[i];
 		i++;
 	}
-	str[i] = '\0';
+	str[i] = 0;
 	return (str);
 }
 
@@ -64,7 +64,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	while (s2 && s2[k])
 		str[i++] = s2[k++];
-	str[i] = '\0';
+	str[i] = 0;
 	return (str);
 }
 
@@ -87,6 +87,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 		start++;
 	}
-	str[i] = '\0';
+	str[i] = 0;
 	return (str);
 }

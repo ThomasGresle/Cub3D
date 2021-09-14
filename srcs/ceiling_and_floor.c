@@ -30,6 +30,8 @@ int	final_color(t_list *config, char *str)
 
 	color = 0;
 	i = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
 	error_color(&i, str, config);
 	color = atoi_color(str, &i) * 65536;
 	i++;

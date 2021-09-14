@@ -22,6 +22,8 @@ int	ft_strlen_parsing(char *str)
 
 	i = 0;
 	j = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
 	while (str[i] && str[i] >= 33 && str[i] <= 126)
 	{
 		i++;
@@ -48,12 +50,13 @@ void	ft_strcpy_parsing(char *dst, char *str)
 
 	i = 0;
 	j = 0;
+	while (str[j] && str[j] == ' ')
+		j++;
 	while (str[j] && str[j] != ' ')
 		j++;
 	while (str[j] && str[j] == ' ')
 		j++;
-	while ((str[j] && str[j] >= 33 && str[j] <= 126)
-		|| (str[j] >= '0' && str[j] <= '9'))
+	while (str[j] && str[j] >= 33 && str[j] <= 126)
 	{
 		dst[i++] = str[j++];
 		while (str[j] && str[j] == ' ')
@@ -76,6 +79,8 @@ void	ft_strcpy_numbers(char *dst, char *str)
 
 	i = 0;
 	j = 0;
+	while (str[j] && str[j] == ' ')
+		j++;
 	while (str[j] && str[j] != ' ')
 		j++;
 	while (str[j] && str[j] == ' ')

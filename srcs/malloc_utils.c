@@ -3,24 +3,29 @@
 void	malloc_string_struct(t_list *options, char **line)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	while (line[i])
 	{
-		if (line[i] && line[i][0] && line[i][0] == 'C')
+		while (line[i] && line[i][j] && line[i][j] == ' ')
+			j++;
+		if (line[i] && line[i][j] && line[i][j] == 'C')
 			malloc_c(options, line[i]);
-		if (line[i] && line[i][0] && line[i][0] == 'F')
+		if (line[i] && line[i][j] && line[i][j] == 'F')
 			malloc_f(options, line[i]);
-		if (line[i] && line[i][0] && line[i][0] == 'N')
+		if (line[i] && line[i][j] && line[i][j] == 'N')
 			malloc_n(options, line[i]);
-		if (line[i] && line[i][0] && line[i][1]
-			&& line[i][0] == 'S' && line[i][1] == 'O')
+		if (line[i] && line[i][j] && line[i][j + 1]
+			&& line[i][j] == 'S' && line[i][j + 1] == 'O')
 			malloc_s(options, line[i]);
-		if (line[i] && line[i][0] && line[i][0] == 'E')
+		if (line[i] && line[i][j] && line[i][j] == 'E')
 			malloc_e(options, line[i]);
-		if (line[i] && line[i][0] && line[i][0] == 'W')
+		if (line[i] && line[i][j] && line[i][j] == 'W')
 			malloc_w(options, line[i]);
 		i++;
+		j = 0;
 	}
 }
 

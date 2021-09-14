@@ -18,7 +18,13 @@ void	get_and_check_texture2(t_list *config)
 		printf("Error\nTexture est incorrecte\n");
 		config->texerror = 1;
 	}
-	init_texture_address(config);
+	if (config->texerror == 0)
+		init_texture_address(config);
+	else
+	{
+		free_str_and_map(config, config->map);
+		exit(0);
+	}
 }
 
 void	get_and_check_texture(t_list *config)

@@ -6,9 +6,9 @@ MLX			=	mlx/libmlx.a
 
 MLX_LINUX	=	-lm -lbsd -lX11 -lXext
 
-CC			=	gcc
+CC			=	clang
 
-FLAGS		=	-Werror -Wall -Wextra -I $(HEADER)
+FLAGS		=	-g -Werror -Wall -Wextra -I $(HEADER)
 
 SRCS		=	srcs/cub3d.c \
 			srcs/ceiling_and_floor.c \
@@ -35,6 +35,9 @@ SRCS		=	srcs/cub3d.c \
 			srcs/struct_init.c \
 			srcs/dda.c\
 			srcs/text_utils.c\
+			srcs/check_file.c\
+			srcs/check_file_utils.c\
+			srcs/check_file_utils2.c\
 
 OBJS		=	$(SRCS:.c=.o)
 

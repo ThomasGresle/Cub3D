@@ -51,5 +51,5 @@ void	create_map(char ***map, char **line, int i, int l)
 		i++;
 		j++;
 	}
-	(*map)[j] = '\0';
+	(*map)[j] = 0;
 }

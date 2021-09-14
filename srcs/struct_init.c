@@ -64,6 +64,13 @@ void	struct_init4(t_list *config)
 	config->movespeed = 0;
 	config->rotspeed = 0;
 	config->texerror = -1;
+	config->north = 0;
+	config->south = 0;
+	config->east = 0;
+	config->west = 0;
+	config->f = 0;
+	config->c = 0;
+	config->count = 0;
 }
 
 void	init_texture_address(t_list *config)
