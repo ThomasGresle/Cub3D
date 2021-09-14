@@ -82,7 +82,7 @@ int	ft_check_file(char *file)
 	fd = open(file, O_DIRECTORY);
 	if (fd != -1)
 	{
-		printf("Error\nLe fichier est un dossier");
+		printf("Error\nLe fichier est un dossier\n");
 		return (0);
 	}
 	if (fd > 0)
@@ -90,7 +90,7 @@ int	ft_check_file(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error\nLe fichier est invalide");
+		printf("Error\nLe fichier est invalide\n");
 		return (0);
 	}
 	if (fd > 0)
