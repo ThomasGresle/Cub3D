@@ -34,7 +34,7 @@ void	ft_copy_file(char **argv, char ***line)
 		return ;
 	(*line)[linenbr] = 0;
 	fd = open(argv[1], O_RDONLY);
-	norm_utils_copy(&linenbr, fd, line, &i);
+	norm_utils_copy(&linenbr, fd, &(*line), &i);
 	return ;
 }
 
@@ -101,10 +101,9 @@ void	ft_parse_map(char ***map, char **line, t_list *config)
 		i++;
 	while (line[i] && line[i][j] && !(line[i][j] >= 48 && line[i][j] <= 57))
 	{
-		while (line[i] && line[i][j] && line[i][j] == ' ')
+		while (line[i][j] == ' ')
 			j++;
-		while (line[i] && line[i][j] && line[i][j] != ' '
-				&& !(line[i][j] >= 48 && line[i][j] <= 57))
+		while (j < (int)(strlen(line[i])) && !(line[i][j] >= 48 && line[i][j] <= 57))
 			i++;
 		while (line[i] && line[i][0] == 0)
 			i++;
