@@ -49,7 +49,7 @@ void	get_and_check_texture(t_list *config)
 	get_and_check_texture2(config);
 }
 
-void	choice_texture(t_list *config, char **map)
+void	choice_texture(t_list *config)
 {
 	if (config->side == 0 && config->raydirx < 0)
 		config->texnum = 0;
@@ -61,7 +61,7 @@ void	choice_texture(t_list *config, char **map)
 		config->texnum = 3;
 }
 
-void	texture_calculation(t_list *config, char **map)
+void	texture_calculation(t_list *config)
 {
 	if (config->side == 0)
 		config->wallx = config->posy + config->perpwalldist * config->raydiry;

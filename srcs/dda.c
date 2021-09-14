@@ -21,7 +21,7 @@ void	check_hit(t_list *config, char **map)
 	}
 }
 
-void	distance_and_lines(t_list *config, char **map)
+void	distance_and_lines(t_list *config)
 {
 	if (config->side == 0)
 		config->perpwalldist = (config->mapx - config->posx
@@ -38,7 +38,7 @@ void	distance_and_lines(t_list *config, char **map)
 		config->drawend = config->height - 1;
 }
 
-void	init_draw(t_list *config, char **map)
+void	init_draw(t_list *config)
 {
 	int	i;
 	int	j;
@@ -50,19 +50,19 @@ void	init_draw(t_list *config, char **map)
 		config->data.addr[j * config->data.line_length / 4
 			+ config->x] = config->final_ceiling;
 	if (j <= config->drawend)
-		draw_text(config, map, config->x, j);
+		draw_text(config, config->x, j);
 	j = i;
 	while (++j < config->height)
 		config->data.addr[j * config->data.line_length / 4
 			+ config->x] = config->final_floor;
 }
 
-void	draw_text(t_list *config, char **map, int x, int y)
+void	draw_text(t_list *config, int x, int y)
 {
 	y = config->drawstart - 1;
-	choice_texture(config, map);
+	choice_texture(config);
 	config->step = 1.0 * config->texture[0].height / config->lineheight;
-	texture_calculation(config, map);
+	texture_calculation(config);
 	config->texpos = (config->drawstart - config->height / 2
 			+ config->lineheight / 2) * config->step;
 	while (++y <= config->drawend)

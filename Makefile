@@ -41,6 +41,9 @@ SRCS		=	srcs/cub3d.c \
 
 OBJS		=	$(SRCS:.c=.o)
 
+.c.o		:
+			${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+
 all		:	$(NAME)
 
 $(NAME)		:	$(OBJS) $(LIBFT) $(MLX) $(HEADER) map.cub

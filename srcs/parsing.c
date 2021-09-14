@@ -11,7 +11,7 @@ void	norm_utils_copy(int *linenbr, int fd, char ***line, int *i)
 	close(fd);
 }
 
-void	ft_copy_file(char **argv, char ***line, int *error)
+void	ft_copy_file(char **argv, char ***line)
 {
 	int		i;
 	int		ret;
@@ -22,6 +22,7 @@ void	ft_copy_file(char **argv, char ***line, int *error)
 	i = 0;
 	ret = 1;
 	linenbr = 0;
+	fd = 0;
 	buf = malloc(sizeof(char));
 	if (!(buf))
 		return ;
@@ -41,13 +42,12 @@ int	ft_parse_file(char **argv, char ***map, t_list *options)
 {
 	char	**line;
 	int		error;
-	int		fd;
 	int		i;
 
 	line = NULL;
 	error = 0;
 	i = 0;
-	ft_copy_file(argv, &line, &error);
+	ft_copy_file(argv, &line);
 	ft_check_options(line, options);
 	if (error == 0)
 	{
@@ -95,6 +95,7 @@ void	ft_parse_map(char ***map, char **line, t_list *config)
 
 	i = 0;
 	j = 0;
+	k = 0;
 	l = 0;
 	while (line[i] && line[i][0] == 0)
 		i++;
@@ -118,7 +119,7 @@ void	ft_parse_map(char ***map, char **line, t_list *config)
 			l = k;
 		j++;
 	}
-	ft_malloc_map(map, j, l, config);
-	create_map(map, line, i, l);
-	finish_map(map, l);
+	ft_malloc_map(&(*map), j, l, config);
+	create_map(&(*map), &(*line), i, l);
+	finish_map(&(*map), l);
 }

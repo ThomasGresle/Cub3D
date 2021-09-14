@@ -8,8 +8,8 @@ int	final_raycasting(t_list *config)
 		struct_init2(config);
 		step_and_sidedist(config);
 		check_hit(config, config->map);
-		distance_and_lines(config, config->map);
-		init_draw(config, config->map);
+		distance_and_lines(config);
+		init_draw(config);
 		config->x++;
 	}
 	mlx_put_image_to_window(config->data.mlx_ptr,

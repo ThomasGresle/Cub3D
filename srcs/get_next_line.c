@@ -32,6 +32,7 @@ static char	cpy_until_sep(char **str, char **line, char **buf)
 	int		j;
 	char	*tmp;
 
+	*line = NULL;
 	i = 0;
 	j = 0;
 	free(*buf);
@@ -61,7 +62,7 @@ static int	ft_control(char **str, int fd, char **line, char **buf)
 	if (stop_read(*str))
 	{
 		*buf = ft_strdup("");
-		cpy_until_sep(str, line, buf);
+		cpy_until_sep(str, &(*line), buf);
 		return (1);
 	}
 	*buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -85,8 +86,11 @@ int	get_next_line(int fd, char **line)
 	static char		*str[1024];
 	char			*tmp;
 
+	check = 0;
 	ret = 1;
-	check = ft_control(&str[fd], fd, line, &buf);
+	buf = NULL;
+	tmp = NULL;
+	check = ft_control(&str[fd], fd, &(*line), &buf);
 	if (check != 0)
 		return (check);
 	while (stop_read(str[fd]) == 0 && ret != 0)
@@ -100,6 +104,6 @@ int	get_next_line(int fd, char **line)
 		free(tmp);
 	}
 	if (cpy_until_sep(&str[fd], line, &buf) == 1 && ret == 0 && !(*str[fd]))
-		return (norm_util(str, fd));
+		return (norm_util(&(*str), fd));
 	return (1);
 }
