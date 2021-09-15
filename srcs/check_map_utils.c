@@ -28,14 +28,15 @@ void	check_walls(char **map, int *i, int *j, t_list *config)
 
 void	go_on_top_right(char **map, int *i, int *j, t_list *config)
 {
-	while (config->error == 0 && map[(*i)][(*j)] && map[(*i) - 1][(*j)]
+	while (config->error == 0 && map[(*i)] && map[(*i) - 1]
+			&& map[(*i)][(*j)] && map[(*i) - 1][(*j)]
 			&& map[(*i)][(*j) + 1] && (map[(*i) - 1][(*j)] != '1'
-			|| map[(*i)][(*j) + 1] != '1'))
+			&& map[(*i)][(*j) + 1] != '1'))
 	{
 		(*i)--;
-		if (!(map[(*i) - 1][(*j)]))
+		if (map[(*i)] && map[(*i)][(*j)] && (!map[(*i) - 1] || !(map[(*i) - 1][(*j)])))
 			error_msg(*i - 1, *j, &(*config));
-		if (map[(*i) - 1][(*j)] == '1')
+		if (map[(*i) - 1] && map[(*i) - 1][(*j)] == '1')
 		{
 			while (map[(*i)][(*j)] && map[(*i)][(*j) + 1]
 			&& map[(*i)][(*j) + 1] == '0' && map[(*i) - 1][(*j)]

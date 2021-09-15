@@ -56,6 +56,6 @@ clean		:
 			make clean -C ./mlx
 
 fclean		:	clean
-			rm $(NAME)
+			rm -f $(NAME)
 
 re		:	fclean all

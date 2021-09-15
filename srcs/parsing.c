@@ -101,14 +101,15 @@ void	ft_parse_map(char ***map, char **line, t_list *config)
 		i++;
 	while (line[i] && line[i][j] && !(line[i][j] >= 48 && line[i][j] <= 57))
 	{
+		j = 0;
 		while (line[i][j] == ' ')
 			j++;
 		while (j < (int)(strlen(line[i])) && !(line[i][j] >= 48 && line[i][j] <= 57))
 			i++;
 		while (line[i] && line[i][0] == 0)
 			i++;
-		j = 0;
 	}
+	j = 0;
 	while (line[i + j])
 	{
 		k = 0;
