@@ -112,6 +112,6 @@ void	parse_map_norm(char **map, int *i, int j)
 			!(map[(*i)][j] >= 48 && map[(*i)][j] <= 57))
 			(*i)++;
 		while (map[(*i)] && map[(*i)][0] == 0)
-			i++;
+			(*i)++;
 	}
 }
