@@ -19,7 +19,7 @@ SRCS		=	srcs/cub3d.c \
 			srcs/ft_atoi.c \
 			srcs/ft_free.c \
 			srcs/get_next_line.c \
-			srcs/get_next_line_utils.c
+			srcs/get_next_line_utils.c \
 			srcs/malloc_utils.c \
 			srcs/mlx_and_moves.c \
 			srcs/moves.c \
@@ -38,7 +38,7 @@ SRCS		=	srcs/cub3d.c \
 			srcs/check_file.c\
 			srcs/check_file_utils.c\
 			srcs/check_file_utils2.c\
-			srcs/check_file_norm.c
+			srcs/check_file_norm.c \
 
 OBJS		=	$(SRCS:.c=.o)
 
