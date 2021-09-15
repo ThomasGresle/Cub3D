@@ -100,3 +100,18 @@ void	ft_strcpy_numbers(char *dst, char *str)
 	}
 	dst[i] = '\0';
 }
+
+void	parse_map_norm(char **map, int *i, int j)
+{
+	while (map[(*i)] && map[(*i)][j] && !(map[(*i)][j] >= 48 && map[(*i)][j] <= 57))
+	{
+		j = 0;
+		while (map[(*i)][j] == ' ')
+			j++;
+		while (j < (int)(strlen(map[(*i)])) &&
+			!(map[(*i)][j] >= 48 && map[(*i)][j] <= 57))
+			(*i)++;
+		while (map[(*i)] && map[(*i)][0] == 0)
+			i++;
+	}
+}

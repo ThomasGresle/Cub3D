@@ -12,60 +12,94 @@
 
 #include "../includes/cub3d.h"
 
-static int		ft_get_that_line(char **line, char *buff, int fctr, int len)
+static int	stop_read(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static char	cpy_until_sep(char **str, char **line, char **buf)
 {
 	int		i;
 	int		j;
 	char	*tmp;
 
-	tmp = *line;
-	i = -1;
-	j = -1;
-	if (!(*line = (char *)malloc(sizeof(**line) * (BUFFER_SIZE * fctr + 1))))
-	{
-		free(tmp);
-		return (-1);
-	}
-	while (tmp && tmp[++i])
-		(*line)[i] = tmp[i];
-	i = (i < 0) ? 0 : i;
-	while (++j < len)
-		(*line)[i + j] = buff[j];
-	(*line)[i + j] = 0;
-	j = (buff[j]) ? j + 1 : j;
 	i = 0;
-	while (buff[j])
-		buff[i++] = buff[j++];
-	buff[i] = 0;
+	j = 0;
+	free(*buf);
+	while ((*str) && (*str)[i] && (*str)[i] != '\n')
+		i++;
+	*line = malloc(sizeof(char) * (i + BUFFER_SIZE));
+	if (!(*line))
+		return (-1);
+	while ((*str)[j] && j < i)
+	{
+		(*line)[j] = (*str)[j];
+		j++;
+	}
+	(*line)[j] = 0;
+	tmp = *str;
+	(*str) = ft_substr((*str), i + 1, ft_strlen((*str)));
 	free(tmp);
 	return (1);
 }
 
-int				get_next_line(int fd, char **line)
+static int	ft_control(char **str, int fd, char **line, char **buf)
 {
-	static char	buff[BUFFER_SIZE + 1];
-	int			len;
-	int			fctr;
-	int			ret;
-
-	fctr = 0;
-	ret = 1;
-	if (!(*line = NULL) && (BUFFER_SIZE < 1 || read(fd, buff, 0)))
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (-1);
-	while (ret)
+	if (!(*str))
+		*str = ft_strdup("");
+	if (stop_read(*str))
 	{
-		if (!(buff[0]))
-		{
-			ret = read(fd, buff, BUFFER_SIZE);
-			buff[ret] = 0;
-		}
-		len = 0;
-		while (buff[len] && buff[len] != '\n')
-			len++;
-		if (buff[len] == '\n')
-			return (ft_get_that_line(line, buff, ++fctr, len));
-		if (ft_get_that_line(line, buff, ++fctr, len) == -1)
-			return (-1);
+		*buf = ft_strdup("");
+		cpy_until_sep(str, line, buf);
+		return (1);
 	}
+	*buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!(*buf))
+		return (-1);
 	return (0);
+}
+
+int	norm_util(char **str, int fd)
+{
+	free(str[fd]);
+	str[fd] = NULL;
+	return (0);
+}
+
+int	get_next_line(int fd, char **line)
+{
+	int				ret;
+	int				check;
+	char			*buf;
+	static char		*str[1024];
+	char			*tmp;
+
+	ret = 1;
+	check = ft_control(&str[fd], fd, line, &buf);
+	if (check != 0)
+		return (check);
+	while (stop_read(str[fd]) == 0 && ret != 0)
+	{
+		ret = read(fd, buf, BUFFER_SIZE);
+		if (ret == -1)
+			return (-1);
+		buf[ret] = 0;
+		tmp = str[fd];
+		str[fd] = ft_strjoin(str[fd], buf);
+		free(tmp);
+	}
+	if (cpy_until_sep(&str[fd], line, &buf) == 1 && ret == 0 && !(*str[fd]))
+		return (norm_util(str, fd));
+	return (1);
 }

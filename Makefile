@@ -19,6 +19,7 @@ SRCS		=	srcs/cub3d.c \
 			srcs/ft_atoi.c \
 			srcs/ft_free.c \
 			srcs/get_next_line.c \
+			srcs/get_next_line_utils.c
 			srcs/malloc_utils.c \
 			srcs/mlx_and_moves.c \
 			srcs/moves.c \

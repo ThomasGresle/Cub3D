@@ -186,5 +186,6 @@ void		ft_check_text(char *str, t_list *config, int *error);
 void		check_errors(t_list *config, char **map);
 void		check_floor_norm(char *str, int *i);
 void		check_ceiling_norm(char *str, int *i);
+void		parse_map_norm(char **map, int *i, int j);
 
 #endif
