@@ -37,6 +37,7 @@ SRCS		=	srcs/cub3d.c \
 			srcs/check_file.c\
 			srcs/check_file_utils.c\
 			srcs/check_file_utils2.c\
+			srcs/check_file_norm.c
 
 OBJS		=	$(SRCS:.c=.o)
 
