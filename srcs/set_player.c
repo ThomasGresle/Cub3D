@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:26 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:14:27 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/15 19:53:24 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	struct_init2(t_list *config)
 	config->mapx = (int)config->posx;
 	config->mapy = (int)config->posy;
 	config->movespeed = 0.05;
-	config->rotspeed = 0.033 * 1;
+	config->rotspeed = 0.05;
 	if (config->raydiry == 0)
 		config->deltadistx = 0;
 	else if (config->raydirx == 0)
