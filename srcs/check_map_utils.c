@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:00 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/16 19:29:09 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/16 20:12:58 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	go_on_top_right(char **map, int *i, int *j, t_list *config)
 		&& map[(*i)][(*j) + 1] != '1'))
 	{
 		(*i)--;
-		if (*i == 0 || (map[(*i)] && map[(*i)][(*j)] &&
-			(!map[(*i) - 1] || !(map[(*i) - 1][(*j)]))))
+		if (*i == 0 || (map[(*i)] && map[(*i)][(*j)]
+			&& (!map[(*i) - 1] || !(map[(*i) - 1][(*j)]))))
 			error_msg(*i - 1, *j, &(*config));
 		if (config->error == 0 && map[(*i) - 1] && map[(*i) - 1][(*j)] == '1')
 		{
