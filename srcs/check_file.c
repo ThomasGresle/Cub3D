@@ -24,6 +24,8 @@ void	ft_check_floor(char *str, t_list *config, int *error)
 	while (str[i] && str[i] >= 48 && str[i] <= 57 && *error == 0)
 	{
 		j = 0;
+		while (str[i] && str[i] == '0')
+			i++;
 		while (str[i] && str[i] >= 48 && str[i] <= 57 && j++ < 3)
 			i++;
 		while (str[i] && str[i] == ' ')
@@ -52,6 +54,8 @@ void	ft_check_ceiling(char *str, t_list *config, int *error)
 	while (str[i] && str[i] >= 48 && str[i] <= 57 && *error == 0)
 	{
 		j = 0;
+		while (str[i] && str[i] == '0')
+			i++;
 		while (str[i] && str[i] >= 48 && str[i] <= 57 && j++ < 3)
 			i++;
 		while (str[i] && str[i] == ' ')
@@ -75,10 +79,12 @@ void	ft_check_floor_ceiling(char *str, t_list *config, int *error)
 	i = 0;
 	while (str[i] && str[i] == ' ')
 		i++;
-	if (str[i] && str[i] == 'F')
+	if (str[i] && str[i] == 'F' && str[i + 1] && str[i + 1] == ' ')
 		ft_check_floor(str, config, error);
-	else
+	else if (str[i] && str[i] == 'C' && str[i + 1] && str[i + 1] == ' ')
 		ft_check_ceiling(str, config, error);
+	else
+		*error = 1;
 }
 
 void	ft_check_options2(char **map, t_list *config, int i, int error)
