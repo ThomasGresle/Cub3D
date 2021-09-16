@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:12:55 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:12:56 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/16 21:54:55 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ void	ft_check_floor(char *str, t_list *config, int *error)
 		while (str[i] && str[i] == ' ')
 			i++;
 	}
-	config->f++;
-	if (str[i] && str[i] != 0)
-		*error = 1;
+	check_floor_norm2(str, i, config, error);
 }
 
 void	ft_check_ceiling(char *str, t_list *config, int *error)
@@ -67,9 +65,7 @@ void	ft_check_ceiling(char *str, t_list *config, int *error)
 		while (str[i] && str[i] == ' ')
 			i++;
 	}
-	config->c++;
-	if (str[i] && str[i] != 0)
-		*error = 1;
+	check_ceiling_norm2(str, i, config, error);
 }
 
 void	ft_check_floor_ceiling(char *str, t_list *config, int *error)
