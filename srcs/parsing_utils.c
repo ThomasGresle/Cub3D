@@ -121,9 +121,12 @@ void	parse_map_norm(char **map, int *i, int j)
 		j = 0;
 		while (map[(*i)][j] == ' ')
 			j++;
-		while (j < (int)(strlen(map[(*i)])) &&
+		if (j < (int)(strlen(map[(*i)])) &&
 			!(map[(*i)][j] >= 48 && map[(*i)][j] <= 57))
+		{
 			(*i)++;
+			j = 0;
+		}
 		while (map[(*i)] && map[(*i)][0] == 0)
 			(*i)++;
 	}
