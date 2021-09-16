@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:12:20 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:12:24 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/16 15:35:37 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,12 @@ int	check_position(char ***map, t_list *config)
 		return (1);
 	}
 	return (0);
+}
+
+void	check_config_norm(t_list *config)
+{
+	if (config->ceiling_color)
+		free(config->ceiling_color);
+	if (config->floor_color)
+		free(config->floor_color);
 }

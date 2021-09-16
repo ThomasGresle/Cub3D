@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:12:32 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/16 15:30:46 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/16 15:34:46 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,7 @@ int	check_and_parse(int argc, char **argv, char ***map, t_list *config)
 	ft_parse_file(argv, &(*map), &(*config));
 	if (ft_check_config(config->ceiling_color) == 0)
 	{
-		if (config->ceiling_color)
-			free(config->ceiling_color);
-		if (config->floor_color)
-			free(config->floor_color);
+		check_config_norm(config);
 		return (0);
 	}
 	config->final_ceiling = final_color(config, config->ceiling_color);
