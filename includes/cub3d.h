@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:55 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:14:55 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/16 14:36:05 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
+#  define BUFFER_SIZE 4096
 # endif
 
 # include <unistd.h>
@@ -199,5 +199,6 @@ void		check_errors(t_list *config, char **map);
 void		check_floor_norm(char *str, int *i);
 void		check_ceiling_norm(char *str, int *i);
 void		parse_map_norm(char **map, int *i, int j);
+void		ft_bzero(void *s, size_t n);
 
 #endif

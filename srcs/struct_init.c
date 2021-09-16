@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:34 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:14:34 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/16 14:33:32 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,20 @@ void	struct_init3(t_list *config)
 
 void	struct_init4(t_list *config)
 {
+	config->data.img = 0;
+	config->data.img2 = 0;
+	config->data.mlx_ptr = 0;
+	config->data.mlx_win = 0;
 	config->data.forward = 0;
 	config->data.back = 0;
 	config->data.left = 0;
 	config->data.right = 0;
 	config->data.rotate_right = 0;
 	config->data.rotate_left = 0;
+	config->data.height = 0;
+	config->data.width = 0;
+	config->data.addr = 0;
+	config->data.addr2 = 0;
 	config->movespeed = 0;
 	config->rotspeed = 0;
 	config->texerror = -1;

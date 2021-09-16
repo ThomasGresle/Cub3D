@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:23 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 20:33:03 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/16 14:48:30 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	t_list	config;
 	int		i;
 
+	ft_bzero(&config, sizeof(t_list));
 	if (BUFFER_SIZE < 1)
 	{
 		printf("Error\nBUFFER SIZE trop faible petit malin\n");

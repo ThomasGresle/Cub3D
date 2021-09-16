@@ -33,12 +33,13 @@ SRCS		=	srcs/cub3d.c \
 			srcs/mlx_utils.c \
 			srcs/copy_utils_norm.c \
 			srcs/struct_init.c \
-			srcs/dda.c\
-			srcs/text_utils.c\
-			srcs/check_file.c\
-			srcs/check_file_utils.c\
-			srcs/check_file_utils2.c\
+			srcs/dda.c \
+			srcs/text_utils.c \
+			srcs/check_file.c \
+			srcs/check_file_utils.c \
+			srcs/check_file_utils2.c \
 			srcs/check_file_norm.c \
+			srcs/ft_bzero.c \
 
 OBJS		=	$(SRCS:.c=.o)
 
