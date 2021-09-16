@@ -14,10 +14,10 @@
 
 void	check_right(char **map, int *i, int *j, t_list *config)
 {
-	if (*i == 0 || *j == 0 || *i >= config->line_nbr
+	if (*i == 0 || *j == 0 || *i >= (config->line_nbr - 1)
 		|| *j >= config->column_nbr)
 		error_msg(*i, *j, &(*config));
-	while (config->error == 0 && map[(*i)][(*j)]
+	while (config->error == 0 && map[(*i)][(*j)] && map[(*i) + 1]
 			&& map[(*i) + 1][(*j)] && map[(*i) + 1][(*j)] != '1'
 			&& map[(*i)][(*j) + 1] && map[(*i)][(*j) + 1] == '1')
 	{
