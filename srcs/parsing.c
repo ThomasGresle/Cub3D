@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:16 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/16 14:49:40 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/16 15:07:03 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_parse_file(char **argv, char ***map, t_list *options)
 	error = 0;
 	i = 0;
 	ft_copy_file(argv, &line);
-	ft_bzero(line, sizeof(line));
+	ft_bzero(*line, sizeof(*line));
 	ft_check_options(line, options);
 	if (error == 0)
 	{
