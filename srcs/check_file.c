@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:12:55 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/17 18:30:45 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 18:45:00 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,7 @@ void	ft_check_options(char **map, t_list *config)
 	int	error;
 
 	i = 0;
-	error = 0;
-	if (map == 0)
-		error = 1;
+	norm_check_options(&error, map);
 	while (error == 0 && map[i] && config->count < 6)
 	{
 		j = 0;

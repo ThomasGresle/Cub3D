@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:55 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/17 17:46:44 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 18:44:30 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,5 +202,6 @@ void		ft_bzero(void *s, size_t n);
 void		check_config_norm(t_list *config);
 void		check_floor_norm2(char *str, int i, t_list *config, int *error);
 void		check_ceiling_norm2(char *str, int i, t_list *config, int *error);
+void		norm_check_options(int *error, char **map);
 
 #endif
