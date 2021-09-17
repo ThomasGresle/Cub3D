@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:56 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/17 17:42:27 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:45:31 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	init_mlx(t_list *config, char **map)
 	set_player(config);
 	config->data.mlx_ptr = mlx_init();
 	if (!(config->data.mlx_ptr))
-		erreur_mlx_init(config, map);
+		erreur_mlx_init(config);
 	config->texerror = 0;
 	get_and_check_texture(config);
 	if (config->texerror == 0)

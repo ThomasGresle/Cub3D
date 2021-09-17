@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:55 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/17 17:41:08 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:45:23 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void		rotation_left(t_list *config);
 void		draw_text(t_list *config, int x, int y);
 int			final_color(t_list *config, char *str);
 void		switch_images(t_list *config);
-void		erreur_mlx_init(t_list *config, char **map);
+void		erreur_mlx_init(t_list *config);
 void		util_norm_copy(int fd, char *buf, int *linenbr);
 void		util_norm_copy2(int *ret, int *fd, char *buf, int *linenbr);
 void		choice_texture(t_list *config);

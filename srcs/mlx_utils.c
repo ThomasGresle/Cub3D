@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:01 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/17 17:40:19 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:45:25 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	switch_images(t_list *config)
 	config->data.addr2 = tmp;
 }
 
-void	erreur_mlx_init(t_list *config, char **map)
+void	erreur_mlx_init(t_list *config)
 {
 	printf("Error\nLa mlx ne se lance pas");
 	free_str_and_map(config);
