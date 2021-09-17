@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:23 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/17 17:39:07 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:46:57 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		free_str_and_map(&config);
 		return (0);
 	}
-	init_mlx(&config, config.map);
+	init_mlx(&config);
 	free_str_and_map(&config);
 	return (0);
 }

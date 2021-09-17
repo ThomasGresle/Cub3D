@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:56 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/17 17:45:31 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:46:49 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	mlx_on(t_list *config)
 	mlx_loop(config->data.mlx_ptr);
 }
 
-void	init_mlx(t_list *config, char **map)
+void	init_mlx(t_list *config)
 {
 	set_player(config);
 	config->data.mlx_ptr = mlx_init();
