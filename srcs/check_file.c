@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:12:55 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/16 21:54:55 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 18:30:45 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ft_check_options2(char **map, t_list *config, int i, int error)
 		while (map[i] && map[i][0] == 0)
 			i++;
 	}
-	if (map[i] || error == 1 || config->count < 6)
+	if (error == 1 || map[i] || config->count < 6)
 	{
 		printf("Error\nConfigurations incorrectes\n");
 		free_array(&map);
@@ -119,7 +119,9 @@ void	ft_check_options(char **map, t_list *config)
 
 	i = 0;
 	error = 0;
-	while (map[i] && config->count < 6 && error == 0)
+	if (map == 0)
+		error = 1;
+	while (error == 0 && map[i] && config->count < 6)
 	{
 		j = 0;
 		while (map[i] && map[i][0] == 0)
