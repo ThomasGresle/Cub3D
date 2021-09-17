@@ -49,7 +49,7 @@ OBJS		=	$(SRCS:.c=.o)
 
 all		:	$(NAME)
 
-$(NAME)		:	$(OBJS) $(LIBFT) $(MLX) $(HEADER) map.cub
+$(NAME)		:	$(OBJS) $(LIBFT) $(MLX) $(HEADER)
 			$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLX) $(MLX_LINUX)
 
 $(MLX)		:
