@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:33 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:13:33 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 23:56:11 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,11 @@ int	ft_atoi_and_free(char *str)
 	erreur = 0;
 	signe = check(str, &i, &erreur);
 	if (erreur == 1)
+	{
+		if (str)
+			free(str);
 		return (0);
+	}
 	while (str[i] >= 48 && str[i] <= 57)
 	{
 		resultat = (resultat * 10) + (str[i] - 48);
