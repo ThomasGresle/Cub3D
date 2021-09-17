@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:16 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/16 19:58:38 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 18:19:51 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_copy_file(char **argv, char ***line)
 	buf = malloc(sizeof(char));
 	if (!(buf))
 		return ;
+	buf[0] = 0;
 	fd = open(argv[1], O_RDONLY);
 	util_norm_copy2(&ret, &fd, buf, &linenbr);
 	util_norm_copy(fd, buf, &linenbr);

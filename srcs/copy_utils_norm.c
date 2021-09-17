@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:18 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:13:19 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 18:07:28 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	util_norm_copy2(int *ret, int *fd, char *buf, int *linenbr)
 		*ret = read(*fd, buf, sizeof(char));
 		if (*ret == -1)
 			return ;
-		if (buf[0] == '\n')
+		if (buf && buf[0] == '\n')
 			(*linenbr)++;
 	}
 }
