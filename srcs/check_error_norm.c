@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 18:44:07 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/17 18:44:17 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 18:47:18 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void	norm_check_options(int *error, char **map)
 {
 	*error = 0;
 	if (map == 0)
-		error = 1;
+		*error = 1;
 }
