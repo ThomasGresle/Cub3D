@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:56 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:13:57 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:42:27 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ int	press_keyboard(int keycode, t_list *config)
 	else if (keycode == ROTATE_RIGHT)
 		config->data.rotate_right = 1;
 	else if (keycode == 65307)
-		free_str_and_map(config, config->map);
+		free_str_and_map(config);
 	return (1);
 }
 
 void	mlx_on(t_list *config)
 {
-	mlx_hook(config->data.mlx_win, 33, 1L << 17, clear_mlx, config);
+	mlx_hook(config->data.mlx_win, 33, 1L << 17, free_str_and_map, config);
 	mlx_hook(config->data.mlx_win, 2, 1L << 0, press_keyboard, config);
 	mlx_hook(config->data.mlx_win, 3, 1L << 1, release_keyboard, config);
 	mlx_loop_hook(config->data.mlx_ptr, final_raycasting, config);

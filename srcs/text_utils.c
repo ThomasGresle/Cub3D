@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:42 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:14:43 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:40:59 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	get_and_check_texture2(t_list *config)
 		init_texture_address(config);
 	else
 	{
-		free_str_and_map(config, config->map);
+		free_str_and_map(config);
 		exit(0);
 	}
 }

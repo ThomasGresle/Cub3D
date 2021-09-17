@@ -6,13 +6,13 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:37 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/16 14:26:46 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:41:29 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	free_str_and_map(t_list	*config, char **map)
+int	free_str_and_map(t_list	*config)
 {
 	int	i;
 
@@ -25,17 +25,18 @@ void	free_str_and_map(t_list	*config, char **map)
 		free(config->west_t);
 	if (config->east_t)
 		free(config->east_t);
-	if (map)
+	if (config->map)
 	{
-		while (map[i])
+		while (config->map[i])
 		{
-			free(map[i]);
+			free(config->map[i]);
 			i++;
 		}
-		free(map[i]);
-		free(map);
+		free(config->map[i]);
+		free(config->map);
 	}
 	clear_mlx(config);
+	return (0);
 }
 
 int	clear_mlx(t_list *config)

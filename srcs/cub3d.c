@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:13:23 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/16 14:48:30 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:39:07 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	main(int argc, char **argv)
 	struct_init(&config);
 	if (check_and_parse(argc, argv, &config.map, &config) == 0)
 	{
-		free_str_and_map(&config, config.map);
+		free_str_and_map(&config);
 		return (0);
 	}
 	init_mlx(&config, config.map);
-	free_str_and_map(&config, config.map);
+	free_str_and_map(&config);
 	return (0);
 }

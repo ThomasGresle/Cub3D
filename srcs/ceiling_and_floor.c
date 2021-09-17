@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:09:19 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:11:41 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:38:48 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	error_color(int *i, char *str, t_list *config)
 	{
 		printf("Error\nSol ou plafond incorrect\n");
 		free(str);
-		free_str_and_map(config, config->map);
+		free_str_and_map(config);
 	}
 }
 

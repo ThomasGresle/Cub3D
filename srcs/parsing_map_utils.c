@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:08 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:14:09 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:40:29 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	ft_malloc_map(char ***map, int i, int j, t_list *config)
 	config->column_nbr = j;
 	*map = malloc(sizeof(char *) * (i + 1));
 	if (!(*map))
-		free_str_and_map(config, *map);
+		free_str_and_map(config);
 	while (k < i)
 	{
 		(*map)[k] = (char *)malloc(sizeof(char) * (j + 1));
 		if (!((*map)[k]))
-			free_str_and_map(config, *map);
+			free_str_and_map(config);
 		k++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:14:55 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/16 21:53:39 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 17:41:08 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,10 +175,9 @@ void		distance_and_lines(t_list *config);
 int			final_raycasting(t_list *config);
 void		init_texture_address(t_list *config);
 void		get_and_check_texture(t_list *config);
-void		free_str_and_map(t_list	*config, char **map);
+int			free_str_and_map(t_list	*config);
 void		init_mlx(t_list *config, char **map);
 int			clear_mlx(t_list *config);
-void		free_str_and_map(t_list	*config, char **map);
 void		init_draw(t_list *config);
 void		switch_images(t_list *config);
 void		move_forward_or_back(t_list *config, char **map);
