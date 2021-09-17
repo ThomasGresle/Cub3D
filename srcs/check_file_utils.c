@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:12:44 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/15 19:12:45 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 18:55:58 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	check_text_n(char *str, t_list *config, int *error)
 	if (str[i] && str[i + 1] && (str[i] != '.' || str[i + 1] != '/'))
 		*error = 1;
 	i += 2;
-	while (i <= (int)strlen(str) && str[i] && str[i] != ' ')
+	while (i <= (int)ft_strlen(str) && str[i] && str[i] != ' ')
 		i++;
-	while (i <= (int)strlen(str) && str[i] && str[i] == ' ')
+	while (i <= (int)ft_strlen(str) && str[i] && str[i] == ' ')
 		i++;
-	if (i <= (int)strlen(str) && str[i])
+	if (i <= (int)ft_strlen(str) && str[i])
 		*error = 1;
 	config->north++;
 }
@@ -53,11 +53,11 @@ void	check_text_s(char *str, t_list *config, int *error)
 	if (str[i] && str[i + 1] && (str[i] != '.' || str[i + 1] != '/'))
 		*error = 1;
 	i += 2;
-	while (i <= (int)strlen(str) && str[i] && str[i] != ' ')
+	while (i <= (int)ft_strlen(str) && str[i] && str[i] != ' ')
 		i++;
-	while (i <= (int)strlen(str) && str[i] && str[i] == ' ')
+	while (i <= (int)ft_strlen(str) && str[i] && str[i] == ' ')
 		i++;
-	if (i <= (int)strlen(str) && str[i])
+	if (i <= (int)ft_strlen(str) && str[i])
 		*error = 1;
 	config->south++;
 }
@@ -78,11 +78,11 @@ void	check_text_e(char *str, t_list *config, int *error)
 	if (str[i] && str[i + 1] && (str[i] != '.' || str[i + 1] != '/'))
 		*error = 1;
 	i += 2;
-	while (i <= (int)strlen(str) && str[i] && str[i] != ' ')
+	while (i <= (int)ft_strlen(str) && str[i] && str[i] != ' ')
 		i++;
-	while (i <= (int)strlen(str) && str[i] && str[i] == ' ')
+	while (i <= (int)ft_strlen(str) && str[i] && str[i] == ' ')
 		i++;
-	if (i <= (int)strlen(str) && str[i])
+	if (i <= (int)ft_strlen(str) && str[i])
 		*error = 1;
 	config->east++;
 }
@@ -103,11 +103,11 @@ void	check_text_w(char *str, t_list *config, int *error)
 	if (str[i] && str[i + 1] && (str[i] != '.' || str[i + 1] != '/'))
 		*error = 1;
 	i += 2;
-	while (i <= (int)strlen(str) && str[i] && str[i] != ' ')
+	while (i <= (int)ft_strlen(str) && str[i] && str[i] != ' ')
 		i++;
-	while (i <= (int)strlen(str) && str[i] && str[i] == ' ')
+	while (i <= (int)ft_strlen(str) && str[i] && str[i] == ' ')
 		i++;
-	if (i <= (int)strlen(str) && str[i])
+	if (i <= (int)ft_strlen(str) && str[i])
 		*error = 1;
 	config->west++;
 }

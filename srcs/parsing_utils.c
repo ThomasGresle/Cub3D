@@ -6,7 +6,7 @@
 /*   By: tgresle <tgresle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 19:11:52 by tgresle           #+#    #+#             */
-/*   Updated: 2021/09/16 15:13:12 by tgresle          ###   ########.fr       */
+/*   Updated: 2021/09/17 18:56:37 by tgresle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,13 @@ void	ft_strcpy_numbers(char *dst, char *str)
 
 void	parse_map_norm(char **map, int *i, int j)
 {
-	while (map[(*i)] && j < (int)(strlen(map[(*i)])) && map[(*i)][j]
+	while (map[(*i)] && j < (int)(ft_strlen(map[(*i)])) && map[(*i)][j]
 		&& !(map[(*i)][j] >= 48 && map[(*i)][j] <= 57))
 	{
 		j = 0;
 		while (map[(*i)][j] == ' ')
 			j++;
-		if (j < (int)(strlen(map[(*i)])) &&
+		if (j < (int)(ft_strlen(map[(*i)])) &&
 			!(map[(*i)][j] >= 48 && map[(*i)][j] <= 57))
 		{
 			(*i)++;
